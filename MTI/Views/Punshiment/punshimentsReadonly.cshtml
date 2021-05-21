@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MTI.Helpers.punshimentcastmodel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="well">السلوك</h2>
+@if (!Model.Any())
+{
+    <p>لم يتم أضافة عقوبات بعد</p>
+}
+else
+{
+    <div class="container">
+        <table class="table table-bordered" id="punshiment">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentID)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.crime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WhoApplyIt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.punshiment)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PunshimentDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MinusGrades)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => data.StudentID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.crime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.WhoApplyIt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.punshiment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.PunshimentDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.MinusGrades)
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}

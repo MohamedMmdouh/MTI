@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MTI.Models.Situations>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 >المواقف</h2>
+
+<p>
+    @Html.ActionLink("اضافة", "Create",new { @class = "classname" })
+</p>
+<table class="table table-active" id="situation">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.students.StudentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.students.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SituationType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.procedure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.students.StudentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.students.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SituationType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Details)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.procedure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("حذف", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts{
+    <script>
+        $("situation").DataTable();
+    </script>
+}

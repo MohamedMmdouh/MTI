@@ -1,0 +1,6 @@
+﻿@model IEnumerable<MTI.Models.News>
+@{/*don;t use it  */ }
+    @foreach (var data in Model)
+    {
+        <li>(@data.category) "  "@data.Details</li>
+    }

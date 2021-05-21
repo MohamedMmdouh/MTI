@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("Styles", false)
+
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="../content/fontawesome/css/all.min.css">
+</head>
+
+<body>
+    <!--
+        loader 
+        mydiv  and animate-bottom using for data load
+        
+        -->
+    <div id="loader"></div>
+
+    <div class="container-fluid animate-bottom" id="myDiv">
+        <div style="padding-left:0;padding-right:0;">@Html.Partial("_NavBar")</div>
+
+        <div class="container-fluid" style="padding-left:15px;padding-right:15px;">
+            @RenderBody()
+
+            <br />
+            <br />
+
+        </div>
+
+    </div>
+
+    <footer id="footer">
+
+        <div class="container-fluid navbar-fixed-bottom" style="height:70px;text-align:center;color:aliceblue;background-color:#00435d;display:inline-block;font-size:large">
+
+            <div dir="ltr" style="width:100%;background-color:#731010;" class="marquee" id="quee">
+
+                <ul style="width:100%;font-weight:bold;list-style-image:url('../../Content/Image/logo color203936240.ico');" id="newslist"></ul>
+
+            </div>
+
+            <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                &copy; @DateTime.Now.Year - فرع نظم المعلومات - المعهد الفني للقوات المسلحة
+            </p>
+        </div>
+
+    </footer>
+
+
+    @Scripts.Render("~/bundles/lib")
+    @RenderSection("scripts", required: false)
+
+   
+
+</body>
+</html>

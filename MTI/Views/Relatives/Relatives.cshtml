@@ -1,0 +1,122 @@
+﻿@model IEnumerable<MTI.Helpers.Relativecastmodel>
+@using MTI.Helpers
+@{
+    ViewBag.Title = "Relatives";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2 class="well text-center">الاقارب</h4>
+    <hr />
+    <div class="container-fluid" style="position:absolute; width:98%;padding-bottom:20px;">
+        <table class="table table-bordered display" id="Relative" >
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentNumber)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentNAme)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Job)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FatherNum)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Relativename)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RelativeNum)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Relationship)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Numofbrothers)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumAmongBrothers)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var data in Model)
+                {
+                <tr>
+                    <td>
+
+                        @{ var studnumAR = data.StudentNumber.ToString().ConvertNumeralsToArabic();}
+                        @Html.DisplayFor(model => studnumAR)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.StudentNAme)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.Job)
+                    </td>
+                    <td>
+                        @{ var FaternumAR = data.FatherNum.ToString().ConvertNumeralsToArabic();}
+                        @Html.DisplayFor(model => FaternumAR)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.Relativename)
+                    </td>
+                    <td>
+                        @{ var RelativeNum = data.RelativeNum.ToString().ConvertNumeralsToArabic();}
+                        @Html.DisplayFor(model => RelativeNum)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.Relationship)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(model => data.Status)
+                    </td>
+                    <td>
+                        @{ var NumofbrothersAR = data.Numofbrothers.ToString().ConvertNumeralsToArabic();}
+                        @Html.DisplayFor(model => NumofbrothersAR)
+                    </td>
+                    <td>
+                        @{ var NumAmongBrothersAr = data.NumAmongBrothers.ToString().ConvertNumeralsToArabic();}
+                        @Html.DisplayFor(model => NumAmongBrothersAr)
+                    </td>
+
+                </tr>
+                }
+
+            </tbody>
+        </table>
+        <br />
+        <br />
+
+    </div>
+    }
+
+
+</div>
+@section scripts{
+    
+    <script>
+        $(document).ready(function () {
+            $("#Relative").dataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'print',
+                    
+                ],
+                title: 'المعهدالفني للقوات المسلحة',
+                
+            });
+        });
+    </script>
+    <script src="~/Scripts/print.js"></script>
+    }

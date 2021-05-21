@@ -1,0 +1,418 @@
+﻿@model IEnumerable<MTI.Models.Students>
+@using MTI.Helpers
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<h1 class="text-center well">بيانات الطلاب</h1>
+
+<div class="container" style="padding-bottom:50px;">
+    <div class="row">
+        <div class="col-4">
+            @Html.ActionLink("اضافه طالب", "New", "Students", new { @class = "btn btn-success  text-center" })
+            <div class="btn btn-success"> @Html.ActionLink("طباعه كافة البيانات", "CreatePdf", "PDF")</div>
+        </div>
+        <div class="col-4">
+            <a href="/Daily_attendance/Index" class="btn btn-primary center ">التمام اليومي</a>
+            <a ID="button" href="/Punshiment/Addpunshiments" class="btn btn-danger center disabled">أضافة عقوبة</a>
+        </div>
+
+        <div class="col-4">
+            <a ID="AddReward" href="/Reward/AddRewards" class="btn btn-success pull-left disabled">أضافة مكافأة</a>
+        </div>
+    </div>
+    <br />
+
+
+    @if (!Model.Any())
+    {
+        <h2 class="well">لم يتم تسجيل بيانات بعد... </h2>
+    }
+    else
+    {
+        <table border="0" cellspacing="5" cellpadding="5">
+            <tbody>
+                <tr style="display:inline-block;">
+                    <td style="text-align:right;">الفرقة الدراسية : </td>
+                    <td>
+                        <select id="level" class="form-control items" style="margin-bottom:10px;">
+                            <option value="الكل"></option>
+                            <option value="عدادي">اعدادي</option>
+                            <option value="متوسط">متوسط</option>
+                            <option value="نهائي">نهائي</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered text-right " style="padding-top:20px;" id="students">
+            <thead class="thead-dark" style="padding-top:20px;width:100%">
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentNumber)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.batchid)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SectionID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SpecializationID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Religion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nationality)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SSN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Mobile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Blood_Type)
+                    </th>
+                    <th >
+                        @Html.DisplayNameFor(model => model.BirthDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        تعديل
+
+                    </th>
+                    <th>
+                        حذف
+                    </th>
+                    <th>
+                        عرض
+                    </th>
+
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+        </table>
+
+
+    }
+</div>
+@section scripts{
+    <script>
+        function convertAr(data) {
+                var id = ['۰', '۱', '۲', '۳', '٤', '٥', '٦', '۷', '۸', '۹'];
+             return data.toString().replace(/[0-9]/g, function (w) {
+                return id[+w]
+            });
+        }
+
+
+        $(document).ready(function () {
+            $("#students").DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                    },
+                    title: 'بيانات الطلاب',
+                    customize: function (win) {
+                        $(win.document.body)
+                            .css('font-size', '10pt')
+                            .css('direction', 'rtl')
+                            .append()
+                            ;
+                            
+                    }, repeatingHead: {
+                        logo: 'https://www.google.co.in/logos/doodles/2018/world-cup-2018-day-22-5384495837478912-s.png',
+                        logoPosition: 'right',
+                        logoStyle: '',
+                        title: '<h3>Sample Heading</h3>'
+                    }
+                }
+                ],
+                style: {
+                    "float": "right"
+                },
+                "language": {
+                    "url": "/Content/DataTables/language/arabic.json"
+                },
+                ajax: {
+                    url: "/api/Student/getstudents",
+                    dataSrc: ""
+                },
+
+                columns: [
+
+                    {
+                        data: "StudentNumber",
+                        render: function (data) {
+                            return convertAr(data);
+                        }
+                    },
+                    {
+                        data: "Name"
+                    },
+                    {
+                        data: "batch.batchNo", searchable: true,
+                         render: function (data) {
+                            return convertAr(data);
+                        }
+                    },
+                    {
+                        data: "Section.Level",
+                         render: function (data) {
+                            return convertAr(data);
+                        }
+                    },
+                    {
+                        data: "specialization.specialty"
+                    },
+                    {
+                        data: "Religion"
+                    },
+                    {
+                        data: "Nationality"
+                    },
+                    {
+                        data: "SSN", 
+                         render: function (data) {
+                            return convertAr(data);
+                        }
+                    },
+                    {
+                        data: "Mobile",
+                        render: function (data) {
+                            return convertAr(data);
+                        }
+                    },
+                    {
+                        data: "Blood_Type"
+                    },
+                    {
+                        data: "BirthDate",
+                        
+                        render: function (data) {
+                            var y = new Date(data).getFullYear();
+                            var d = new Date(data).getDate();
+                            var m = new Date(data).getMonth();
+                            return convertAr(y +"/"+m+"/"+d);
+                        }
+                    },
+                    {
+                        data: "Address"
+                    },
+                    {
+                        data: "Image",
+                        render: function (data) {57
+                            return "<img  width=" + 40 + " height=" + 40 + " src=" + data + " />";
+                        }
+                    },
+
+                    {
+                        data: "ID",  //Get value from RoleId column, I assumed you used "RoleId" as the name for RoleId in your JSON, in my case, I didn't assigned any name in code behind so i used "mData": "0"
+                        style: "btn btn-primary",
+                        "mRender": function (data, type, Students) {
+                            return " <a class=" + "buttonprimary" + " href='/students/Edit/" + data + "'>تعديل </a> "
+                        }
+                    }, {
+                        data: {
+                            Name: "Name",
+                            ID: "ID"
+
+                        },
+                        render: function (data, mdata) {
+                            return "<button  class='btn btn-danger btn-sm Jsdelete' id=" + "Jsdelete" + " data-studID=" + data.ID + " " + "data-name=" + data.Name + " title=" + "حذف" + " ><i class='fa fa-trash'></button>"
+                        }
+                    },
+                    {
+                        data: "ID",  //Get value from RoleId column, I assumed you used "RoleId" as the name for RoleId in your JSON, in my case, I didn't assigned any name in code behind so i used "mData": "0"
+                        "mRender": function (data, type, student) {
+                            return "<a class=" + "buttoninfo" + " href='/students/studentcard/" + data + "'>عرض الملف </a> "
+                        }
+                    }
+
+                ],
+                "createdRow": function (row, data, dataIndex) {
+                    if (data.behaviour < -20) { $(row).addClass("text-warning"); }
+                    else { $(row).css('background-color', ''); }
+                }
+
+            });
+
+        });
+
+       
+        //access search box datatable
+        var target = document.body;
+        var observer = new MutationObserver(function () {
+            $('input[type="search"]').keyup(function () {
+
+                $('input[type="search"]').val(convertAr($('input[type="search"]').val()));
+            });
+        });
+
+        // configuration of the observer:
+        var config = { childList: true, subtree: true };
+
+        // pass in the target node, as well as the observer options
+        observer.observe(target, config);
+
+        $("#students").on("click", ".Jsdelete", function () {
+            var button = $(this);
+            bootbox.confirm({
+                message: "سيتم حذف بيانات الطالب " + $(this).attr("data-name"),
+                buttons: {
+                    confirm: {
+                        label: 'تأكيد',
+                        className: 'btn-success',
+                    },
+                    cancel: {
+                        label: 'ألغاء',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/Student/DeleteStudent/" + button.attr("data-studID"),
+                            method: "post",
+                            type:"post"
+                        })
+                            .done(function () {
+                                button.parents("tr").remove();
+                                toastr.success("تمم حذف الطالب  بنجاح")
+                            }).fail(function () {
+                                toastr.fail("حدثت مشكله اثناء الحذف ")
+
+                            })
+                    }
+                    else {
+                        return;
+                    }
+                }
+            });
+
+
+        });
+        $(document).ready(function () {
+            var table = $('#students').DataTable();
+
+            $('#level').on('change', function () {
+                var x = this.value;
+                if (x == "الكل") {
+                    x = "";
+                }
+                table.search(x).draw();
+            });
+
+        });
+
+        $(document).ready(function () {
+            var table = $('#students').DataTable();
+
+            $('#students tbody').on('click', 'tr', function () {
+                $(this).toggleClass('selected');
+            });
+
+            $('#button').click(function () {
+                var myids = new Array();
+                myids = [];
+                var data = table.rows('.selected').data();
+                for (var c = 0; c < data.length; c++) {
+                    myids.push(data[c].ID);
+                }
+                if (data.length == 0) {
+                    $('#Button').href = "#";
+                }
+                else {
+                    var postData = { values: myids };
+                    if (postData == 0) {
+                        return;
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: "/punshiment/Resivedata",
+                            data: postData,
+                            success: function (data) {
+                                window.location.href = "/punshiment/Addpunshiments";
+                            },
+                            dataType: "json",
+                            traditional: true
+                        });
+                    }
+                }
+
+
+            });
+        });
+
+      
+        $(document).ready(function () {
+            var table = $('#students').DataTable();
+
+            $('#AddReward').click(function () {
+                var myids = new Array();
+                myids = [];
+                var data2 = table.rows('.selected').data();
+                var x = data2;
+                for (var c = 0; c < data2.length; c++) {
+                    myids.push(data2[c].ID);
+                }
+                if (data2.length == 0) {
+                    $('#AddReward').href = "#";
+                }
+                else {
+                    postData = { values: myids };
+                    if (postData == 0) {
+                        $('#AddReward').href = "#";
+                    } else {
+                        $.ajax({
+                            type: "POST",
+                            url: "/Reward/Resivedata",
+                            data: postData,
+                            success: function (data) {
+                                window.location.href = "/Reward/AddRewards";
+                            },
+                            dataType: "json",
+                            traditional: true
+                        });
+                    }
+                }
+
+
+            });
+        });
+
+
+
+        $(document).ready(function () {
+            $('#students tbody').on('click', 'tr', function () {
+                var table = $('#students').DataTable();
+                if (table.rows('.selected').any()) {
+                    $('#AddReward').removeClass('disabled');
+                    $('#button').removeClass('disabled');
+                }
+                else {
+                    $('#AddReward').addClass('disabled');
+                    $('#button').addClass('disabled');
+                }
+            });
+        });
+    </script>
+    <script src="~/Scripts/print.js"></script>
+}

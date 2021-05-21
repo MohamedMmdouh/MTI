@@ -1,0 +1,123 @@
+﻿@model MTI.Models.Attendance
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Attendance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.students.Qualification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.students.Qualification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clinic_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clinic_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.underObservation_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.underObservation_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.underObservation_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.underObservation_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hosptital_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hosptital_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hosptital_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hosptital_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Absant_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Absant_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Absant_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Absant_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lec_absant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lec_absant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recovery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recovery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Totalminusgrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Totalminusgrade)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

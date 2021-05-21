@@ -1,0 +1,90 @@
+﻿@model IEnumerable<MTI.Helpers.punshimentcastmodel>
+@using MTI.Helpers
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="well">ازالة آثر العقوبات</h2>
+@if (!Model.Any())
+{
+    <h2>لا يوجد</h2>
+}
+else
+{
+    <div class="container-fluid" style="position:absolute; width:98%">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        التاريخ
+                    </th>
+
+                    <th>
+                        رقم عسكري
+                    </th>
+                    <th>
+                        الجريمة
+                    </th>
+
+                    <th>
+                        العقوبة
+                    </th>
+                    <th>
+                        الآمر بالعقوبة
+                    </th>
+                    <th>
+                        اجمالي الدرجات المفقودة
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var data in Model)
+                {
+                    if ((DateTime.Now.Date - data.PunshimentDate.Value.Date).Days >= 60 && data.MinusGrades < 10)
+                    {
+
+                        <tr>
+                            <td>
+                                @{ var ArDate = data.PunshimentDate.Value.ToString("yyyy/MM/dd").ConvertNumeralsToArabic();}
+                                @Html.DisplayFor(model => ArDate)
+                            </td>
+                            <td>
+                                @{ var ArID = data.StudentID.ToString().ConvertNumeralsToArabic();}
+
+                                @Html.DisplayFor(model => ArID)
+                            </td>
+                            <td>
+                                @{ var Arcrime = data.crime.ToString().ConvertNumeralsToArabic();}
+                                @Html.DisplayFor(model => Arcrime)
+                            </td>
+                            <td>
+                                @{ var Arpunish = data.punshiment.ToString().ConvertNumeralsToArabic();}
+
+                                @Html.DisplayFor(model => Arpunish)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => data.WhoApplyIt)
+                            </td>
+                            <td>
+                                @{ var ArGrade = data.MinusGrades.ToString().ConvertNumeralsToArabic();}
+                                @Html.DisplayFor(model => ArGrade)
+                            </td>
+                            <td style="margin:2px; ">
+                                @Html.ActionLink("ازالة", "Remove", new { id = data.ID }, htmlAttributes: new { @class = "btn btn-success", @role = "button" })
+
+                            </td>
+                        </tr>
+                    }
+
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+}

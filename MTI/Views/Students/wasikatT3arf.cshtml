@@ -1,0 +1,366 @@
+﻿@model MTI.Customdata.StudentsArabicdata
+@using MTI.Helpers
+
+@{
+    ViewBag.Title = "wasikatT3arf";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <button id="print" class="btn btn-primary">طباعة</button>
+</div>
+<div class="container printx" id="snippet" style="  font-size:150%;">
+
+    <div class="row" id="data" style="direction:rtl;text-decoration:underline;  ">
+        <div class="col-md-4 text-right" style="text-align:right;">
+            <p><strong>المعهد الفني للقوات المسلحة</strong></p>
+            <p><strong>فـــرع نــظــم المعـلــومات</strong></p>
+            <p><strong>@ViewBag.Date</strong></p>
+        </div>
+        <div class="col-md-4 text-center">
+            <h2 class="border fa-underline text-danger"><strong>وثيقة تعارف</strong></h2>
+        </div>
+        <div class="col-md-4">
+            <img src="~/Image/logo color204144382.jpg" style="width:120px;height:120px;position:absolute;top:0;left:10px;" />
+        </div>
+    </div>
+
+
+    <div class="row font-weight-bold" style="direction:rtl;text-align:right;">
+
+        <div class="col-sm-9">
+
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.StudentNumber)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.StudentNumber, new { @class = "form-control " })</label>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.grade)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.grade, new { @class = "form-control" })</label>
+                </div>
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Name)</h3></label>
+                    <label class="form-control font-weight-bolder
+                               ">@Html.DisplayFor(model => model.Name, new { @class = "form-control" })</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.batchNo)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.batchNo, new { @class = "form-control" })</label>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.getindate)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.getindate, new { @class = "form-control" })</label>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Joindate)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Joindate, new { @class = "form-control" })</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <!--left col-->
+                    <br />
+                    <div class="text-center">
+                        <img src="@Model.Image" class="avatar img-tumbnail" style="height:100;width:100;width: 210px;height: 210px;  border: 5px solid #555;" alt="avatar">
+                        @{
+                            var x = Model.ID;
+                        }
+                        <a class=" btn btn-info" style="height:40px;" href='/students/Edit/@Model.ID' +>تعديل البيانات </a>
+                    </div></hr><br>
+
+
+                </div><!--/col-3-->
+            </div>
+    <div class="col-12" style="direction:rtl;text-align:right;">
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Qualification)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Qualification, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Qualificationspecialize)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Qualificationspecialize, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Qualificationdepart)</h3></label>
+                <label class="form-control  font-weight-bolder"> @Html.DisplayFor(model => model.Qualificationdepart, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.qualificationgetdate)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.qualificationgetdate, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.GPA)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.GPA, new { @class = "form-control" })%</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Religion)</h3></label>
+                <label class="form-control  font-weight-bolder"> @Html.DisplayFor(model => model.Religion, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Katiba)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Katiba, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.saria)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.saria, new { @class = "form-control" })</label>
+            </div>
+
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Fasila)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Fasila, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.gama3a)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.gama3a, new { @class = "form-control" })</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.BirthDate)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.BirthDate, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.PlaceofBirth)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.PlaceofBirth, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.cityofbirth)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.cityofbirth, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        <!---->
+        @if (Model.Nationality.ToString() == "مصري")
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Nationality)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Nationality, new { @class = "form-control" })</label>
+                </div>
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.City)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.City, new { @class = "form-control" })</label>
+                </div>
+
+
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Post)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Post, new { @class = "form-control" })</label>
+                </div>
+            </div>
+            <div>
+
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Address)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Address, new { @class = "form-control" })</label>
+
+            </div>
+        }
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Weight)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Weight, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.height)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.height, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Blood_Type)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Blood_Type, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Mobile)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Mobile, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-6">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.secondNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.secondNum, new { @class = "form-control" })</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.fathername)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.fathername)</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.fatherNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.fatherNum, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.fatherjob)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.fatherjob, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.fatherqualifcation)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.fatherqualifcation, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.mothername)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.mothername)</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.motherNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.motherNum, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.motherjob)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.motherjob, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.motherqualifcation)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.motherqualifcation, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.responsiblename)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.responsiblename)</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.responsibleaddress)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.responsibleaddress, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.responsibleNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.responsibleNum, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.responsiblejob)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.responsiblejob, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Relativename)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Relativename)</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Relativeadress)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Relativeadress, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.RelativeNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.RelativeNum, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Relationship)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Relationship)</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Job)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Job, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Jobaddress)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Jobaddress, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+        <!---->
+
+        <div class="row">
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Relativename)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Relativename, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Relationship)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Relationship, new { @class = "form-control" })</label>
+            </div>
+            @*          <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Status)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Job)</label>
+            </div>*@
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.RelativeNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.RelativeNum, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        <div>
+            
+        </div>
+        <hr />
+
+        @section scripts{
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#data").hide();
+
+                });
+
+                $("#print").live("click", function () {
+                    var mywindow = window.open('', 'new div', 'height=400,width class="text-center"=600');
+                    $("#data").show();
+
+                    var divContents = $("#snippet").html();
+                    mywindow.document.write('<html><head><title></title>');
+                    mywindow.document.write('<link rel="stylesheet" href="/content/bootstrap-spacelap.css" type="text/css" />');
+                    mywindow.document.write('<link rel="stylesheet" href="/content/viewstudent.css" type="text/css" />');
+                    mywindow.document.write('<link rel="stylesheet" href="/content/bootstrap.css" type="text/css" />');
+                    mywindow.document.write('<link rel="stylesheet" href="/content/student-profile.css" type="text/css" />');
+
+                    mywindow.document.write('</head><body > <div style="font-size:larger">');
+                    mywindow.document.write(divContents);
+                    mywindow.document.write('</div></body></html>');
+                    mywindow.document.close();
+                    mywindow.focus();
+                    setTimeout(function () { mywindow.print(); }, 1000);
+                    $("#data").hide();
+                });
+            </script>
+
+        }

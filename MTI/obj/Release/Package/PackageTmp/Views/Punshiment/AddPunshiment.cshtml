@@ -1,0 +1,118 @@
+﻿@model MTI.Models.punishment
+
+@{
+    ViewBag.Title = "أضافه عقوبة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1 class="center well" style="text-align:center">نموذج عقوبة</h1>
+
+    <div class="field-validation-error">@ViewBag.ErrorMessage</div>
+    @using (Html.BeginForm("Add_Punshiment", "Punshiment"))
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-sm-12 right well">
+            <div class="form-group">
+                @Html.LabelFor(m => m.StudentID)
+                @Html.TextBoxFor(m => m.StudentID, new { @class = "form-control", id = "studentnum", Type = "number", oninput = "validity.valid||(value='');" })
+                @Html.ValidationMessageFor(m => m.StudentID)
+                <div id="Error">
+                    <p id="data"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.PunshimentDate)
+                @Html.EditorFor(model => model.PunshimentDate, new { htmlAttributes = new { @class = "form-control", id = "datepicker1", placeholder = "تاريخ تسجيل العقوبة" } })
+                @Html.ValidationMessageFor(m => m.PunshimentDate)
+                
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.crime)
+                @Html.TextAreaFor(m => m.crime, new { @class = "form-control", Type = "text" })
+                @Html.ValidationMessageFor(m => m.crime)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.WhoApplyIt)
+                @Html.TextBoxFor(m => m.WhoApplyIt, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(m => m.WhoApplyIt)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.punshiment)
+                @Html.TextBoxFor(m => m.punshiment, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(m => m.punshiment)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.MinusGrades)
+                @Html.TextBoxFor(m => m.MinusGrades, new { @class = "form-control", type = "number", oninput = "validity.valid||(value='');", id = "minus" })
+                @Html.ValidationMessageFor(m => m.MinusGrades)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" id="submit" class="btn btn-danger btn-lg">تسجيل</button>
+                <hr />
+                <hr />
+
+            </div>
+        </div>
+    }
+</div>
+<hr />
+<hr />
+@Html.HiddenFor(m => m.ID, new Dictionary<string, object> { { "data-val", false } })
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#studentnum").keyup(function () {
+                var id = $("#studentnum").val();
+                if (id.length == 5) {
+                    $.ajax({
+                        url: "/api/Student/studentnmberexist/" + id,
+                        method: "post", type: "POST",
+                        success: function (data) {
+                            var button = document.getElementById(".submit");
+
+                            if (data.Name != null) {
+                                $("#Error #data").text("ينتمي الرقم للطالب " + data.Name);
+                                $("#Error #data").css('color', 'green');
+                                $("#Error #data").css('font', 'bold');
+                                $("#studentnum").css('border-color', 'green');
+                            }
+
+
+                        }, error: function (error) {
+
+                            $("#Error #data").text("لا يوجد طالب بهذا الرقم");
+                            $("#Error #data").css('color', 'red');
+                            $("#studentnum").css('border-color', 'red');
+                        },
+
+                    });
+                }
+                else {
+                    $("#Error #data").text("");
+                    $("#studentnum").css('border-color', '');
+
+                }
+            });
+        });
+        $('#minus').keyup(function (e) {
+          //  if ($(this).val() > 100 || $(this).val() < 0) {
+          //      e.preventDefault();
+          //      $(this).val(100);
+            //}
+        });
+    </script>
+
+}
+

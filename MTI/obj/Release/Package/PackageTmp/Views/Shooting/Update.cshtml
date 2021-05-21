@@ -1,0 +1,63 @@
+﻿@model MTI.Models.Shooting
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <h1 class="center well" style="text-align:center">تعديل الرماية</h1>
+    <div class="field-validation-error">@ViewBag.ErrorMessage</div>
+    @using (Html.BeginForm("Editdata", "Shooting"))
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-sm-12 right well">
+
+           
+            <div class="form-group">
+                @Html.LabelFor(m => m.Trainingname)
+                @Html.TextBoxFor(m => m.Trainingname, new { @class = "form-control", Type = "text" })
+                @Html.ValidationMessageFor(m => m.Trainingname)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.weaponname)
+                @Html.TextBoxFor(m => m.weaponname, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(m => m.weaponname)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.numofbullet)
+                @Html.TextBoxFor(m => m.numofbullet, new { @class = "form-control", type = "number", oninput = "validity.valid||(value='');" })
+                @Html.ValidationMessageFor(m => m.numofbullet)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.numofsuccessshots)
+                @Html.TextBoxFor(m => m.numofsuccessshots, new { @class = "form-control", type = "number", oninput = "validity.valid||(value='');" })
+                @Html.ValidationMessageFor(m => m.numofsuccessshots)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.ShootigErrors)
+                @Html.TextAreaFor(m => m.ShootigErrors, new { @class = "form-control", type = "Text" })
+                @Html.ValidationMessageFor(m => m.ShootigErrors)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" id="submit" class="btn btn-danger btn-lg">حفظ</button>
+                @Html.HiddenFor(m => m.ID, new Dictionary<string, object> { { "data-val", false } })
+                @Html.HiddenFor(m => m.StudentID, new Dictionary<string, object> { { "data-val", false } })
+                @Html.HiddenFor(m => m.Dateofshoot, new Dictionary<string, object> { { "data-val", false } })
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+</div>

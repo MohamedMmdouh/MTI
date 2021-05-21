@@ -1,0 +1,200 @@
+﻿@model MTI.ViewModel.DailyattendanceViewModel
+
+@{
+    ViewBag.Title = "ViewAttendanceDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="display:inline-block">
+    <h2>التمام اليومي عن يوم  @Model.dailyattendance.Date.Value.Date.ToString("dd-MMMM-yyyy")</h2>
+    <button id="print" class="btn btn-primary">طباعة</button>
+</div>
+<hr />
+<div class="print solid" id="Attendence_pdf">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.dailyattendance.Total)</th>
+                <th>@Html.DisplayNameFor(model => model.dailyattendance.AttendeesNum)</th>
+                <th>@Html.DisplayNameFor(model => model.dailyattendance.AbsentNum)</th>
+                <th>@Html.DisplayNameFor(model => model.dailyattendance.Date)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.dailyattendance.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dailyattendance.AttendeesNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dailyattendance.AbsentNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dailyattendance.Date)
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <h4>الخوارج</h4>
+    <table class="table table-bordered text-right " id="absant">
+        <thead class="thead-dark">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.clinic)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.Mission)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.nabtchy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.office)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.outingmst)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.outtrainning)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.permititedleave)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.prison)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.services)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.Sickleave)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.Tests)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.Underobservation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.visit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absantDepart.Atiam)
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr id="Data">
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.clinic)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.Mission)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.nabtchy)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.office)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.outingmst)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.outtrainning)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.permititedleave)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.prison)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.services)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.Sickleave)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.Tests)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.Underobservation)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.visit)
+                </td>
+                <td class="data">
+                    @Html.DisplayTextFor(m => m.absantDepart.Atiam)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="jumbotron">
+        <table class="table table-bordered studdata">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(m => m.dailyattendance.AbsantDetails[0].Department)</th>
+                    <th>@Html.DisplayNameFor(m => m.dailyattendance.AbsantDetails[0].Studname)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i = 0; i < Model.dailyattendance.AbsantDetails.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.dailyattendance.AbsantDetails[i].Department)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.dailyattendance.AbsantDetails[i].Studname)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $("#jumbotron #studdata").DataTable();
+
+        var elements = document.getElementById("Data").querySelectorAll(".data");
+
+        for (var i = 0; i < elements.length; i++) {
+            var x = elements[i].textContent;
+
+            if (parseInt(x) == 0) {
+                //$("tr").children("td:eq(" + i+")").remove();
+                elements[i].textContent = "-";
+            }
+
+        }
+
+        $("#print").live("click", function () {
+            var mywindow = window.open('', 'new div', 'height=400,width=600');
+            var divContents = $("#Attendence_pdf").html();
+            mywindow.document.write('<html dir="rtl"><head><title></title>');
+            mywindow.document.write('<link rel="stylesheet" href="/content/bootstrap-spacelap.css" type="text/css" />');
+            mywindow.document.write('<link rel="stylesheet" href="/content/viewstudent.css" type="text/css" />');
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(divContents);
+            mywindow.document.write('</body></html>');
+            mywindow.document.close();
+            mywindow.focus();
+            setTimeout(function () { mywindow.print(); }, 1000);
+        });
+
+    </script>
+
+
+}

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MTI.Helpers.Shootingcastmodel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="well">رماية الطالب</h2>
+
+
+<div class="container-fluid" style="position:absolute; width:98%">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Trainingname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dateofshoot)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Grade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.weaponname)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.numofbullet)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.numofsuccessshots)
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => data.Trainingname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.Dateofshoot)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.Grade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.weaponname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.numofbullet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => data.numofsuccessshots)
+                    </td>
+                    <td style="margin:2px; ">
+                        @Html.ActionLink("تعديل", "update", new { id = data.ID }, htmlAttributes: new { @class = "btn btn-info", @role = "button" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

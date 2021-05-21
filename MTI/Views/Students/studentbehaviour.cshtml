@@ -1,0 +1,75 @@
+﻿@model IEnumerable<MTI.Models.Students>
+@{
+    ViewBag.Title = "studentbehaviour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center well"> الطلاب</h2>
+
+<table class="table table-bordered text-right " style="padding-top:20px;width:100%" id="students">
+    <thead class="thead-dark" style="padding-top:20px">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.StudentNumber)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.batch.batchNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.behaviour)
+            </th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts{
+
+
+    <script>
+
+        $(document).ready(function () {
+            $("#students").DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                    extend: 'print',
+                    title: 'بيانات الطلاب',
+                }
+                ],
+                style: {
+                    "float": "right"
+                },
+                "language": {
+                    "url": "/Content/DataTables/language/arabic.json"
+                },
+                ajax: {
+                    url: "/api/Student/getbadstudnets",
+                    dataSrc: ""
+                },
+
+                columns: [
+
+                    {
+                        data: "StudentNumber"
+                    },
+                    {
+                        data: "Name"
+                    },
+                    {
+                        data: "batch.batchNo"
+                    },
+                    {
+                        data: "behaviour"
+                    },
+                ]
+            });
+        });
+    </script>
+    <script src="~/Scripts/print.js"></script>
+
+}

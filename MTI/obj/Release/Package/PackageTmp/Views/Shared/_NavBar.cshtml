@@ -1,0 +1,95 @@
+﻿<nav class="navbar navbar-expand-sm   navbar-dark sticky-top" style="background-color:#007bff;color:white;padding-left:0;padding-right:0;">
+    <a class="logo pull-left " href="#" style="float:left;">
+        <img src="~/Image/logo200319938.png" style="width:40px;height:40px" />
+        <span class="name pull-left center" id="name" style="padding:14px;font-family:Arial;font-size:large;font-weight:bold;width:200px;color:white">
+            <span class="type"></span>
+        </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse right" style="float:right;" id="navbarColor01">
+        @Html.Partial("_LoginPartial")
+        <ul class="nav navbar-na mr-auto navbar-right font fontcolors" style="border-right:solid 1px #fff;">
+
+            <li class="nav-item active">
+                <a class="nav-link fontcolors" href="/home/index">الرئيسية <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fontcolors" href="/Home/About">عن المعهد</a>
+            </li>
+            @if (Request.IsAuthenticated )
+            {
+                <li>
+                    <div class="dropdown">
+                        <button class="dropbtn text-center fontcolors nav-link">لواء الطلبة</button>
+                        <div class="dropdown-content">
+                            <a href="~/Students/Index">بيانات الطلاب</a>
+                            <a href="~/Daily_attendance/Index">التمام اليومي</a>
+                            <a href="~/Reward/Index">المكافآت</a>
+                            <a href="~/Punshiment/Index">العقوبات</a>
+                            <a href="~/Shooting/Index">الرماية</a>
+
+                        </div>
+                    </div>
+                </li>
+
+            }
+            else
+            {
+                <li>
+                    <a class="nav-link fontcolors" href="/students/index"> لواء الطلبة</a>
+                </li>
+            }
+            <li>
+                <a class="nav-link fontcolors" href="/Home/Commingsoon">   الإمتحانات   </a>
+            </li>
+            <li>
+                <a class="nav-link fontcolors" href="/Home/Commingsoon"> الأنشطة والإلتزامات</a>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">قادة المعهد</button>
+                    <div class="dropdown-content">
+                        <a href="#" id="manager">مدير المعهد الفني</a>
+                        <a href="#" id="vice">نائب مدير المعهد الفني</a>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    
+</nav>
+
+<script src="~/Scripts/animate/animatetexttype.js"></script>
+<script src="~/Scripts/animate/ityped.js"></script>
+
+<script>
+    window.ityped.init(document.querySelector(".type"), {
+        strings: [
+            "المعهد الفني للقوات المسلحة"
+            , "الأيمان      العمل   التضحية"
+        ], loop: true,
+        typeSpeed: 90
+    });
+    $("#manager").on("click", function () {
+        window.open("/pdf/cv.pdf", 'height=650,width=840');
+
+    });
+    $("#vice").on("click", function () {
+        window.open("/pdf/نائب مدير المعهد الفني للقوات المسلحة.pdf", 'height=650,width=840');
+
+    });
+       
+
+
+</script>
+
+
+
+
+
+

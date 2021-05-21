@@ -1,0 +1,65 @@
+﻿@model MTI.Models.Situations
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>التفاصيل</h2>
+
+<div>
+    <h4>Situations</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.students.StudentNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.students.StudentNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.students.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.students.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SituationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SituationType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.procedure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.procedure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

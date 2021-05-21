@@ -1,0 +1,129 @@
+﻿@model MTI.Models.Attendance
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Attendance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.students.Qualification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.students.Qualification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clinic_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clinic_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.underObservation_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.underObservation_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.underObservation_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.underObservation_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hosptital_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hosptital_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hosptital_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hosptital_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Absant_from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Absant_from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Absant_to)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Absant_to)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lec_absant)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lec_absant)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.recovery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.recovery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Totalminusgrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Totalminusgrade)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

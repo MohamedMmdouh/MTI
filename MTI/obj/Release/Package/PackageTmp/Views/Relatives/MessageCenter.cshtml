@@ -1,0 +1,86 @@
+﻿@model IEnumerable<MTI.ViewModel.StudnetNum>
+
+@{
+    ViewBag.Title = "MessageCenter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{var counter = 1;}
+
+<h2 class="well">بيانات الطلاب</h2>
+<div class="container-fluid" style="position:absolute; width:98%;">
+
+    <table class="table table-bordered"  id="studentnumbers">
+        <thead>
+            <tr>
+
+                <th>
+                    م
+                </th>
+                <th>
+                    اسم الطالب
+                </th>
+                <th>
+                    الرقم العسكري
+                </th>
+                <th>
+                    رقم التليفون
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td>@(counter++)</td>
+                    <td>@data.Name</td>
+                    <td>@data.Studentnum</td>
+                    <td>@data.phone_number</td>
+                    <td><input type="checkbox" id="@data.ID" name="" value="Car"></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#studentnumbers").DataTable({
+                dom: 'Bfrtip',
+                buttons: [{
+                    extend: 'print',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                    },
+                    title: 'بيانات الطلاب',
+                    customize: function (win) {
+                        $(win.document.body)
+                            .css('font-size', '10pt')
+                            .css('direction', 'rtl')
+                            .append()
+                            ;
+
+                    }, repeatingHead: {
+                        logo: 'https://www.google.co.in/logos/doodles/2018/world-cup-2018-day-22-5384495837478912-s.png',
+                        logoPosition: 'right',
+                        logoStyle: '',
+                        title: '<h3>Sample Heading</h3>'
+                    }
+                }
+                ],
+                style: {
+                    "float": "right"
+                },
+                "language": {
+                    "url": "/Content/DataTables/language/arabic.json"
+                }
+            });
+        });
+
+    </script>
+
+}

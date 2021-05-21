@@ -1,0 +1,71 @@
+﻿@model MTI.Models.punishment
+@{
+    ViewBag.Title = "Addpunshiments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm("Addpunshimentss", "Punshiment"))
+{
+    @Html.AntiForgeryToken()
+
+    <h4 class="well text-center">نموذج عقوبة</h4>
+    <hr />
+
+    <div class="col-sm-12 right well">
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.PunshimentDate)
+            @Html.EditorFor(model => model.PunshimentDate, new { htmlAttributes = new { @class = "form-control", id = "datepicker1", placeholder = "تاريخ تسجيل العقوبة" } })
+            @Html.ValidationMessageFor(m => m.PunshimentDate)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.crime)
+            @Html.TextAreaFor(m => m.crime, new { @class = "form-control", Type = "text" })
+            @Html.ValidationMessageFor(m => m.crime)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.WhoApplyIt)
+            @Html.TextBoxFor(m => m.WhoApplyIt, new { @class = "form-control", type = "text" })
+            @Html.ValidationMessageFor(m => m.WhoApplyIt)
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.punshiment)
+            @Html.TextBoxFor(m => m.punshiment, new { @class = "form-control", type = "text" })
+            @Html.ValidationMessageFor(m => m.punshiment)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.MinusGrades)
+            @Html.TextBoxFor(m => m.MinusGrades, new { @class = "form-control", type = "number", oninput = "validity.valid||(value='');", id = "grade" })
+            @Html.ValidationMessageFor(m => m.MinusGrades)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" id="submit" class="btn btn-danger btn-lg">تسجيل</button>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+        </div>
+
+    </div>
+
+}
+@section scripts{
+
+    <script>
+        $('#grade').keyup(function (e) {
+            if ($(this).val() > 100 || $(this).val() < 0) {
+                e.preventDefault();
+                $(this).val(100);
+            }
+        });
+    </script>
+    <script src="~/Scripts/MTI/AddStudent.js"></script>
+
+}

@@ -1,0 +1,553 @@
+﻿@model MTI.Customdata.StudentsArabicdata
+@using MTI.Helpers
+@{
+    ViewBag.Title = "StudentCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <button id="print" class="btn btn-primary">طباعة</button>
+</div>
+<div class="container printx" id="snippet" style="  font-size:150%;">
+
+    <div class="row" id="data" style="direction:rtl;text-decoration:underline;  ">
+        <div class="col-md-4 text-right" style="text-align:right;">
+            <p><strong>المعهد الفني للقوات المسلحة</strong></p>
+            <p><strong>فـــرع نــظــم المعـلــومات</strong></p>
+            <p><strong>@ViewBag.Date</strong></p>
+        </div>
+        <div class="col-md-4 text-center">
+            <h2 class="border fa-underline text-danger"><strong>كــارت الــطالــب</strong></h2>
+            <h3><strong>البيانات الأساسية</strong></h3>
+        </div>
+        <div class="col-md-4">
+            <img src="~/Image/logo color204144382.jpg" style="width:120px;height:120px;position:absolute;top:0;left:10px;" />
+        </div>
+    </div>
+
+
+    <div class="row font-weight-bold" style="direction:rtl;text-align:right;">
+
+        <div class="col-sm-9">
+
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.StudentNumber)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.StudentNumber, new { @class = "form-control " })</label>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.SSN)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.SSN, new { @class = "form-control" })</label>
+                </div>
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.grade) / @Html.DisplayNameFor(m => m.Name)</h3></label>
+                    <label class="form-control font-weight-bolder
+                               ">@Html.DisplayFor(model => model.grade, new { @class = "form-control" })/@Html.DisplayFor(model => model.Name, new { @class = "form-control" })</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.batchNo)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.batchNo, new { @class = "form-control" })</label>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Level)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Level, new { @class = "form-control" })</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.generalspecialize)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.generalspecialize, new { @class = "form-control" })</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Specialization)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Specialization, new { @class = "form-control" })</label>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.getindate)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.getindate, new { @class = "form-control" })</label>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Joindate)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Joindate, new { @class = "form-control" })</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.wepon)</h3></label>
+                            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.wepon, new { @class = "form-control" })</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <!--left col-->
+                    <br />
+                    <div class="text-center">
+                        <img src="@Model.Image" class="avatar img-tumbnail" style="height:100;width:100;width: 210px;height: 210px;  border: 5px solid #555;" alt="avatar">
+                        @{
+                            var x = Model.ID;
+                        }
+                        <a class=" btn btn-info" style="height:40px;" href='/students/Edit/@Model.ID' +>تعديل البيانات </a>
+                    </div></hr><br>
+
+
+                </div><!--/col-3-->
+            </div>
+    <div class="col-12" style="direction:rtl;text-align:right;">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Katiba)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Katiba, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.saria)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.saria, new { @class = "form-control" })</label>
+            </div>
+
+
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Fasila)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Fasila, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.gama3a)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.gama3a, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Qualification)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Qualification, new { @class = "form-control" })</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.GPA)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.GPA, new { @class = "form-control" })%</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.getindate)</h3></label>
+                <label class="form-control  font-weight-bolder"> @Html.DisplayFor(model => model.getindate, new { @class = "form-control" })</label>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.BirthDate)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.BirthDate, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.PlaceofBirth)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.PlaceofBirth, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.cityofbirth)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.cityofbirth, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        <!---->
+        @if (Model.Nationality.ToString() == "مصري")
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Nationality)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Nationality, new { @class = "form-control" })</label>
+                </div>
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.City)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.City, new { @class = "form-control" })</label>
+                </div>
+
+
+                <div class="col-md-4">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Post)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Post, new { @class = "form-control" })</label>
+                </div>
+            </div>
+            <div>
+
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Address)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Address, new { @class = "form-control" })</label>
+
+            </div>
+        }
+
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Weight)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Weight, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.height)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.height, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-4">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Blood_Type)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Blood_Type, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Mobile)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Mobile, new { @class = "form-control" })</label>
+            </div>
+            <div class="col-md-6">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.secondNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.secondNum, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        <div>
+            <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Email)</h3></label>
+            @{ var zx = Model.Email;}
+            <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => zx, new { @class = "form-control" })</label>
+        </div>
+        @*
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Job)</h3></label>
+                                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Job)</label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.fatherNum)</h3></label>
+                                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.fatherNum, new { @class = "form-control" })</label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Numofbrothers)</h3></label>
+                                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Numofbrothers, new { @class = "form-control" })</label>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.NumAmongBrothers)</h3></label>
+                                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.NumAmongBrothers, new { @class = "form-control" })</label>
+                                </div>
+
+                            </div>
+                            <!---->
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Relativename)</h3></label>
+                                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Relativename, new { @class = "form-control" })</label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Relationship)</h3></label>
+                                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Relationship, new { @class = "form-control" })</label>
+                                </div>
+                                @*          <div class="col-md-3">
+                    <label for="SSn"><h3>@Html.DisplayNameFor(m => m.Status)</h3></label>
+                    <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.Job)</label>
+                </div>*/@
+            <div class="col-md-3">
+                <label for="SSn"><h3>@Html.DisplayNameFor(m => m.RelativeNum)</h3></label>
+                <label class="form-control font-weight-bolder"> @Html.DisplayFor(model => model.RelativeNum, new { @class = "form-control" })</label>
+            </div>
+        </div>
+        *@
+        <hr />
+
+
+        <div>
+            <div class="well bg-danger" style="display:inline-block;width:100%;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2 style="float:right;">مسير السلوك</h2>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>الاجمالي ( @Model.behaviour )</h2>
+                    </div>
+                </div>
+                <a class=" btn btn-danger" href='/Punshiment/AddPunshiment' style="float:left;text-align:center;"> أضافة عقوبة </a>
+            </div>
+            @if (Model.punishments.Count == 0)
+            {
+                <h2>لا يوجد عقوبات مسجلة لهذا الطالب</h2>
+            }
+            else
+            {
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center"> </th>
+                            <th class="text-center">تاريخ العقوبة</th>
+                            <th class="text-center">بند الاوامر</th>
+                            <th class="text-center">الجريمة</th>
+                            <th class="text-center">الآمر بالعقوبة</th>
+                            <th class="text-center"> العقوبة</th>
+                            <th class="text-center"> عزل</th>
+                            <th class="text-center"> انذار بالفصل</th>
+
+                            <th class="text-center">الدرجات المفقودة</th>
+                            <th class="text-center">القسم</th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var punsh in Model.punishments)
+                    {
+                        <tbody id="punishrow" class=" font-weight-bolder">
+
+                            <tr id="@punsh.ID">
+                                <td><input id="hide" type="checkbox" /></td>
+                                <td>
+                                    @{ var arabicdates = punsh.PunshimentDate.Value.ToString("yyyy/MM/dd").ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => arabicdates)
+                                </td>
+
+                                <td>
+                                    @{ var Arorder = punsh.order.ToString().ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => Arorder)
+                                </td>
+
+                                <td>@Html.DisplayFor(modelItem => punsh.crime)</td>
+
+                                <td>@Html.DisplayFor(modelItem => punsh.WhoApplyIt)</td>
+                                <td>@Html.DisplayFor(modelItem => punsh.punshiment)</td>
+
+                                <td>
+                                    @if (punsh.remove == false)
+                                    {
+                                        <i class="fa fa-window-close-o" aria-hidden="true"></i>
+                                    }
+                                    else
+                                    {
+                                        <p>تم عزله</p>
+                                    }
+                                <td>
+                                    @Html.DisplayFor(modelItem => punsh.alert)
+                                </td>
+
+                                <td>
+                                    @{ var Minus = punsh.MinusGrades.ToString().ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => Minus)
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => punsh.level)</td>
+                            </tr>
+                        </tbody>
+                    }
+
+                </table>
+            }
+        </div>
+        <hr />
+
+        <div>
+            <div class="well bg-warning" style="display:inline-block;width:100%;">
+                <h2 style="float:right;">رماية الطالب</h2>
+                <a class=" btn btn-primary" href='/shooting/AddData' style="float:left;text-align:center;"> أضافة رماية </a>
+            </div>
+            @if (Model.shootings.Count == 0)
+            {
+                <h2>لا يوجد رماية لهذا الطالب</h2>
+            }
+            else
+            {
+                <table class="table table-bordered  text-center" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="text-center">أسم التمرين</th>
+                            <th class="text-center">تاريخ </th>
+                            <th class="text-center">نوع السلاح</th>
+                            <th class="text-center">عدد الطلقات</th>
+                            <th class="text-center">أصابة</th>
+                            <th class="text-center">التقدير</th>
+                            <th class="text-center">أخطاء الرامي</th>
+                            <th class="text-center">القسم</th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var shoot in Model.shootings)
+                    {
+                        <tbody id="shoot" class=" font-weight-bolder">
+
+                            <tr>
+                                <td><input id="hide" type="checkbox" /></td>
+                                <td>@Html.DisplayFor(modelItem => shoot.Trainingname)</td>
+                                <td>
+                                    @{ var shootdatear = shoot.Dateofshoot.ToString("yyyy/MM/dd").ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => shootdatear)
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => shoot.weaponname)</td>
+
+                                <td>
+                                    @{ var numofbullet = shoot.numofbullet.ToString().ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => numofbullet)
+                                </td>
+                                <td>
+                                    @{ var successshotar = shoot.numofsuccessshots.ToString().ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => successshotar)
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => shoot.Grade)</td>
+                                <td>@Html.DisplayFor(modelItem => shoot.ShootigErrors)</td>
+                                <td>@Html.DisplayFor(modelItem => shoot.level)</td>
+
+                            </tr>
+                        </tbody>
+                    }
+
+                </table>
+            }
+        </div>
+        <div>
+            <div class="well bg-info" style="display:inline-block;width:100%;">
+                <h2 style="float:right;">المواقف</h2>
+            </div>
+            @if (Model.situations.Count == 0)
+            {
+                <h2>لا يوجد مواقف لهذا الطالب</h2>
+            }
+            else
+            {
+                <table class="table table-bordered  text-center" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th class="text-center">التاريخ </th>
+                            <th class="text-center"> نوع الموقف</th>
+                            <th class="text-center">السبب</th>
+                            <th class="text-center">التفاصيل</th>
+
+                        </tr>
+                    </thead>
+
+                    @foreach (var shoot in Model.situations)
+                    {
+                        <tbody class=" font-weight-bolder">
+
+                            <tr>
+                                <td>
+                                    @{ var situationdateAR = shoot.date.Value.ToString("yyyy/MM/dd").ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => situationdateAR)
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => shoot.SituationType)</td>
+                                <td>@Html.DisplayFor(modelItem => shoot.procedure)</td>
+                                <td>@Html.DisplayFor(modelItem => shoot.Details)</td>
+
+                            </tr>
+                        </tbody>
+                    }
+
+                </table>
+            }
+        </div>
+
+        <div>
+            <div class="well bg-info" style="display:inline-block;width:100%;">
+                <h2 style="float:right;">المواظبة</h2>
+            </div>
+            @if (Model.attendances.Count == 0)
+            {
+                <h2>لا يوجد مواقف لهذا الطالب</h2>
+            }
+            else
+            {
+                <table class="table table-bordered  text-center" style="text-align:center;">
+                    <thead>
+                        <tr>
+                            <th class="text-center">التاريخ </th>
+                            <th class="text-center"> عيادة</th>
+                            <th class="text-center">ظ ك من </th>
+                            <th class="text-center">ظ ك إلي </th>
+                            <th class="text-center">خارجي مستشفي من </th>
+                            <th class="text-center">خارجي مستشفي إلي </th>
+                            <th class="text-center">الغياب من </th>
+                            <th class="text-center">الغياب إلي </th>
+                            <th class="text-center">التفاصيل</th>
+                            <th class="text-center">اجمالي</th>
+
+                        </tr>
+                    </thead>
+
+                    @foreach (var attened in Model.attendances)
+                    {
+                        <tbody class=" font-weight-bolder">
+
+                            <tr>
+                                <td>
+                                    @{ var attardate = attened.Date.Value.ToString("yyyy/MM/dd").ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => attardate)
+                                </td>
+                                <td>عيادة @Html.DisplayFor(modelItem => attened.Clinic_type) </td>
+                                <td>
+                                    @{ var obserfrom = attened.underObservation_from.Value.ToString("yyyy/MM/dd").ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => obserfrom)
+                                </td>
+                                <td>
+                                    @{ var obserto = attened.underObservation_to.Value.ToString("yyyy/MM/dd").ConvertNumeralsToArabic();}
+                                    @Html.DisplayFor(modelItem => obserto)
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => attened.hosptital_from)</td>
+                                <td>@Html.DisplayFor(modelItem => attened.hosptital_to)</td>
+                                <td>@Html.DisplayFor(modelItem => attened.Absant_from)</td>
+                                <td>@Html.DisplayFor(modelItem => attened.Absant_to)</td>
+                                <td>@Html.DisplayFor(modelItem => attened.Details)</td>
+                                <td>@Html.DisplayFor(modelItem => attened.Totalminusgrade)</td>
+
+                            </tr>
+                        </tbody>
+                    }
+
+                </table>
+            }
+        </div>
+
+    </div>
+
+
+
+        </div>
+
+           
+
+
+        
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#data").hide();
+          
+        });
+
+        $("#print").live("click", function () {
+            var mywindow = window.open('', 'new div', 'height=400,width class="text-center"=600');
+            $("#data").show();
+            $('#punishrow tr [type="checkbox"]:not(:checked)').closest("tr").hide();
+            $('#shoot tr [type="checkbox"]:not(:checked)').closest("tr").hide();
+
+            var divContents = $("#snippet").html();
+            mywindow.document.write('<html><head><title></title>');
+            mywindow.document.write('<link rel="stylesheet" href="/content/bootstrap-spacelap.css" type="text/css" />');
+            mywindow.document.write('<link rel="stylesheet" href="/content/viewstudent.css" type="text/css" />');
+            mywindow.document.write('<link rel="stylesheet" href="/content/bootstrap.css" type="text/css" />');
+            mywindow.document.write('<link rel="stylesheet" href="/content/student-profile.css" type="text/css" />');
+
+            mywindow.document.write('</head><body >');
+            mywindow.document.write(divContents);
+            mywindow.document.write('</body></html>');
+            mywindow.document.close();
+            mywindow.focus();
+            setTimeout(function () { mywindow.print(); }, 1000);
+            $("#data").hide();
+            $('#punishrow tr [type="checkbox"]:not(:checked)').closest("tr").show();
+            $('#shoot tr [type="checkbox"]:not(:checked)').closest("tr").show();
+        });
+ </script>
+
+}

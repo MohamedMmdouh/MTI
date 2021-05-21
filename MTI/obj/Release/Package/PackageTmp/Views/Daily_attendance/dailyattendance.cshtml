@@ -1,0 +1,148 @@
+﻿
+@model MTI.Models.daily_attendance
+
+@{
+    ViewBag.Title = "dailyattendance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="field-validation-error">@ViewBag.ErrorMessage</div>
+<div class="container" style="padding-bottom:50px;">
+
+    @using (Html.BeginForm("Create", "Daily_attendance"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <h2>التمام اليومي </h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(m => m.Total)</th>
+                        <th>@Html.DisplayNameFor(m => m.AttendeesNum)</th>
+                        <th>@Html.DisplayNameFor(m => m.AbsentNum)</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @Html.TextBoxFor(m => m.Total, new { htmlAttributes = new { @class = "form-control", id = "Total", Type = "number" } })
+                            @Html.ValidationMessageFor(m => m.Total)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.AttendeesNum, new { htmlAttributes = new { @class = "form-control", id = "atendancenum", Type = "number" } })
+                            @Html.ValidationMessageFor(m => m.AttendeesNum)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(m => m.AbsentNum, new { htmlAttributes = new { @class = "form-control", id = "absentnum", Type = "number" } })
+                            @Html.ValidationMessageFor(m => m.AbsentNum)
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="form-group" id="item-list">
+                <label class="alert-danger" id="error"></label>
+
+                <div id="studdata" class="form-group">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" id="click" class="btn btn-primary btn-lg">تسجيل</button>
+
+    }
+    </div>
+    @section scripts
+{
+        <script>
+
+            $(document).ready(function () {
+                $("#AttendeesNum").keyup(function () {
+                    if (parseInt($("#AttendeesNum").val()) > parseInt($("#Total").val()) || parseInt($("#AttendeesNum").val()) < 0) {
+                        $("#AttendeesNum").css("color", "red");
+                        $(" #studdata").empty();
+                        $("#error").html("ادخل البيانات بشكل صحيح");
+                        $("#AbsentNum").val() = "";
+                    }
+                    if ($("#AttendeesNum").val().toString() == "") {
+                        $(" #studdata").empty();
+                        $("#AbsentNum").val(parseInt($("#Total").val()));
+                        setdata(parseInt($("#Total").val()));
+                    }
+                    else {
+                        $("#AttendeesNum").css("color", "");
+                        $("#error").html("");
+                        $("#AbsentNum").val(parseInt($("#Total").val()) - parseInt($("#AttendeesNum").val()))
+
+                    }
+                });
+            });
+            $(document).ready(function () {
+                $("#AbsentNum").keyup(function () {
+                    if (parseInt($("#AbsentNum").val()) > parseInt($("#Total").val()) || parseInt($("#AbsentNum").val()) < 0) {
+                        $("#AbsentNum").css("color", "red");
+                        $(" #studdata").addClass("hidden");
+                        $("#error").html("ادخل البيانات بشكل صحيح");
+                    }
+
+                    else {
+                        $("#AbsentNum").css("color", "");
+                        $("#error").html("");
+                        $("#AbsentNum").val(parseInt($("#Total").val()) - parseInt($("#AttendeesNum").val()));
+                        $(" #studdata").removeClass("hidden");
+                    }
+                });
+            });
+
+            function setdata(Z) {
+                for (var i = 0; i < Z; i++) {
+                    var n = ` <select id="myselection" class="form-control" style="margin-bottom:10px;" class="items" name="AbsantDetails[` + i + `].Department" id="AbsantDetails[' + i + '].Department">
+                                    <option value="عيادة">عيادة</option>
+                                    <option value="نوبتجي">نوبتجي</option>
+                                    <option value="خدمة">خدمة</option>
+                                    <option value="تحت الملاحظة">تحت الملاحظة</option>
+                                    <option value="أجازة بتصريح">أجازة بتصريح</option>
+                                    <option value="أجازة مرضية">أجازة مرضية</option>
+                                    <option value="مكتب">مكتب</option>
+                                    <option value="مأمورية">مأمورية</option>
+                                    <option value="أختبارات">أختبارات</option>
+                                    <option value="تدريب خارجي">تدريب خارجي</option>
+                                    <option value="زيارة">زيارة</option>
+                                    <option value="أتيام"> أتيام</option>
+                                    <option value="مست خارجي">مست خارجي</option>
+                                    <option value="سجن">سجن</option>
+                                </select > `;
+                    var l = '<input class="form-control" placeholder="اسم الطالب" style="margin-bottom:10px;"  type="text" class="items" name="AbsantDetails[' + i + '].Studname" id="AbsantDetails[' + i + '].Studname" />';
+                    $("#item-list #studdata").append('<label>طالب رقم ' + (i + 1) + '</label>');
+                    $("#item-list #studdata").append(n);
+                    $("#item-list #studdata").append(l);
+                }
+            }
+
+            $(document).ready(function () {
+                $("#AttendeesNum").keyup(function () {
+                    if (parseInt($("#AttendeesNum").val()) > parseInt($("#Total").val())) {
+                        $(" #studdata").empty();
+                        $("#AttendeesNum").css("color", "red");
+                        $("#AttendeesNum").val() = "";
+                    }
+                    if (parseInt($("#AttendeesNum").val()) <= parseInt($("#Total").val())) {
+                        $(" #studdata").empty();
+                        $("#AbsentNum").val(parseInt($("#Total").val()) - parseInt($("#AttendeesNum").val()));
+                        setdata($("#AbsentNum").val());
+
+                    }
+                    else {
+
+                    }
+
+                });
+            });
+
+
+
+        </script>
+        @Scripts.Render("~/bundles/jqueryval")
+    }

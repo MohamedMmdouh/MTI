@@ -1,0 +1,21 @@
+﻿@model MTI.Models.Situations
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>تأكيد حذف موقف الطالب ؟</h3>
+<div>
+    
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="تأكيد" class="btn btn-default" /> 
+        </div>
+    }
+</div>

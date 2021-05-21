@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MTI.Models.daily_attendance>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">التمام اليومي</h1>
+<button class="btn btn-success btn-lg text-center" style="margin-bottom:10px;">@Html.ActionLink(" اضافه", "dailyattendance", "Daily_attendance")</button>
+
+<table class="table table-bordered text-right " id="Dailyattendance">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AttendeesNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AbsentNum)
+            </th>
+            <th>
+                اليوم
+            </th>
+            <th>
+
+            </th>
+
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AttendeesNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AbsentNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date.Value.DayOfWeek)
+                </td>
+                <td style="margin:2px; ">
+                    @Html.ActionLink("عرض", "Viewday", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-info", @role = "button" })
+                </td>
+
+            </tr>
+        </tbody>
+    }
+</table>
+
+

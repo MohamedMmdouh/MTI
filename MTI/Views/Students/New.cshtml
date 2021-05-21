@@ -1,0 +1,471 @@
+﻿@model MTI.ViewModel.StudentViewModel
+
+@{
+    ViewBag.Title = "StudentForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1 class="well">@Model.Title  بيانات الطالب  </h1>
+    <div class="col-lg-12 well">
+        <div class="row float-right">
+            <div class="field-validation-error">@ViewBag.ErrorMessage</div>
+
+            @using (Html.BeginForm("Save", "Students", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+            <div class="col-sm-12 right" id="Data-form">
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.StudentNumber)
+                        <div class="row">
+                            <div class="col-sm-10">
+                                @Html.TextBoxFor(m => m.students.StudentNumber, new { @class = "form-control", id = "studentnum", Type = "Number", min = 0, tabindex = 1, oninput = "validity.valid||(value='');", placeholder = "الرقم العسكري" })
+                            </div>
+                            <div class="col-md-2">
+                                <div class="spinner-border hidden" role="status" id="spinner">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.students.StudentNumber)
+
+                        <div id="Error">
+                            <p id="data"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.grade)
+                        @Html.DropDownListFor(m => m.students.grade, new List<SelectListItem>
+                    {
+                                        new SelectListItem() {Text = "طالب", Value="طالب"},new SelectListItem() {Text = "ط م", Value="ط م"},new SelectListItem() {Text = "ط ن", Value="ط ن"},
+                                        new SelectListItem() {Text = "ع ط ن", Value="ع ط ن"},new SelectListItem() {Text = "ر ط ن", Value="ر ط ن"},new SelectListItem() {Text = "رأ ط ن", Value="رأ ط ن"}
+                                        ,new SelectListItem() {Text = "مساعد ط ن", Value="مساعد ط ن"},new SelectListItem() {Text = "مساعدأ ط ن", Value="مساعدأ ط ن"}
+                    }, new { @class = "form-control", tabindex = 2 })
+                        @Html.ValidationMessageFor(m => m.students.grade)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.Name)
+                        @Html.TextBoxFor(m => m.students.Name, new { @class = "form-control", tabindex = 3, placeholder = "اسم الطالب" })
+                        @Html.ValidationMessageFor(m => m.students.Name)
+                    </div>
+
+                </div>
+                <div class="row right">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.batchid)
+                        @Html.DropDownListFor(m => m.students.batchid, new SelectList(Model.batches, "ID", "batchNo"), new { @class = "form-control", tabindex = 4 })
+                        @Html.ValidationMessageFor(m => m.students.batchid)
+                    </div>
+                    <div class="col-sm-4 form-group">
+
+                        @Html.LabelFor(m => m.students.getindate)
+                        @if (Model.Title == "تعديل")
+                        {
+                            @Html.EditorFor(model => model.students.getindate, new { htmlAttributes = new { @class = "form-control", id = "datepicker", placeholder = "تاريخ الالتحاق", tabindex =5 } })
+
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.students.getindate, new { htmlAttributes = new { @class = "form-control", placeholder = "تاريخ الالتحاق", tabindex =5, type = "Date" } })
+                        }
+                        @Html.ValidationMessageFor(m => m.students.getindate)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.joindate)
+                        @if (Model.Title == "تعديل")
+                        {
+                            @Html.EditorFor(model => model.students.joindate, new { htmlAttributes = new { @class = "form-control", tabindex = 6, id = "datepicker1", placeholder = "تاريخ الانضمام بالمعهد" } })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.students.joindate, new { htmlAttributes = new { @class = "form-control", tabindex = 6, placeholder = "تاريخ الانضمام بالمعهد", type = "date" } })
+                        }
+                        @Html.ValidationMessageFor(m => m.students.joindate)
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.main_specialization)
+                        @Html.DropDownListFor(m => m.students.main_specialization, new List<SelectListItem>
+                            {
+                                                new SelectListItem() {Text = "كهربا", Value="كهربا"},
+                                                new SelectListItem() {Text = "ميكانيكا", Value="ميكانيكا"},
+                            }, new { @class = "form-control", tabindex = 7 })
+                        @Html.ValidationMessageFor(m => m.students.main_specialization)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.SpecializationID)
+                        @Html.DropDownListFor(m => m.students.SpecializationID, new SelectList(Model.specialization, "ID", "specialty"), new { @class = "form-control", tabindex = 8 })
+                        @Html.ValidationMessageFor(m => m.students.SpecializationID)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.SectionID)
+                        @Html.DropDownListFor(m => m.students.SectionID, new SelectList(Model.sections, "ID", "Level"), new { @class = "form-control", tabindex = 9 })
+                        @Html.ValidationMessageFor(m => m.students.SectionID)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.students.armyspecialization)
+                    @Html.TextBoxFor(m => m.students.armyspecialization, new { @class = "form-control", tabindex = 10 })
+                    @Html.ValidationMessageFor(m => m.students.armyspecialization)
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.qualifications.Qualification)
+                        @Html.DropDownListFor(x => x.students.qualifications.Qualification, new List<SelectListItem>
+                                                   {
+                                                                       new SelectListItem() {Text = "ثانوية عامة", Value="ثانوية عامة"},
+                                                                       new SelectListItem() {Text = "ثانوية أزهرية", Value="ثانوية أزهرية"},
+                                                                       new SelectListItem() {Text = "ثانوي صناعي", Value="ثانوي صناعي"}
+                                                   }, new { @class = "form-control", tabindex = 11 })                        @Html.ValidationMessageFor(m => m.students.qualifications.Qualification)
+                                            </div>
+
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.qualifications.qualispecialize)
+                        @Html.TextBoxFor(m => m.students.qualifications.qualispecialize, new { @class = "form-control", tabindex = 12, placeholder = "شعبه" })
+                        @Html.ValidationMessageFor(m => m.students.qualifications.qualispecialize)
+                    </div>
+
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.qualifications.qualidepart)
+                        @Html.TextBoxFor(m => m.students.qualifications.qualidepart, new { @class = "form-control", tabindex = 12, placeholder = "المجموع", id = "gpa" })
+                        @Html.ValidationMessageFor(m => m.students.qualifications.qualidepart)
+                    </div>
+                </div>
+
+
+
+                <div class="row right">
+
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.qualifications.qualigetdate)
+                        @if (Model.Title == "تعديل")
+                        {
+                            @Html.EditorFor(model => model.students.qualifications.qualigetdate, new { htmlAttributes = new { @class = "form-control", id = "datepicker", placeholder = "تاريخ الالتحاق", tabindex = 13 } })
+
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.students.qualifications.qualigetdate, new { htmlAttributes = new { @class = "form-control", placeholder = "تاريخ الالتحاق", tabindex = 14, type = "Date" } })
+                        }
+                        @Html.ValidationMessageFor(m => m.students.qualifications.qualigetdate)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.qualifications.gpa)
+                        @Html.TextBoxFor(m => m.students.qualifications.gpa, new { @class = "form-control", tabindex = 15, placeholder = "محل الميلاد" })
+                        @Html.ValidationMessageFor(m => m.students.qualifications.gpa)
+                    </div>
+
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.Religion)
+                        @Html.DropDownListFor(x => x.students.Religion, new List<SelectListItem>
+                            {
+                                                new SelectListItem() {Text = "مسلم", Value="مسلم"},
+                                                new SelectListItem() {Text = "مسيحي", Value="مسيحي"},
+                                                new SelectListItem() {Text = "أخري", Value="أخري"}
+                            }, new { @class = "form-control", tabindex = 16 })
+                        @Html.ValidationMessageFor(m => m.students.Religion)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.BirthDate)
+                        @if (Model.Title == "تعديل")
+                        {
+                            @Html.EditorFor(model => model.students.BirthDate, new { htmlAttributes = new { @class = "form-control", id = "datepicker2", tabindex = 17, placeholder = "تاريخ الميلاد" } })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.students.BirthDate, new { htmlAttributes = new { @class = "form-control", tabindex = 17, placeholder = "تاريخ الميلاد", type = "date" } })
+                        }
+                        @Html.ValidationMessageFor(m => m.students.BirthDate)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.PlaceofBirth)
+                        @Html.TextBoxFor(m => m.students.PlaceofBirth, new { @class = "form-control", tabindex = 18, placeholder = "محل الميلاد" })
+                        @Html.ValidationMessageFor(m => m.students.PlaceofBirth)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.cityofbirth)
+                        @Html.TextBoxFor(m => m.students.cityofbirth, new { @class = "form-control", tabindex = 19, placeholder = "المحافظة الميلاد" })
+                        @Html.ValidationMessageFor(m => m.students.cityofbirth)
+                    </div>
+                </div>
+
+                @*
+        <div class="col-sm-4 form-group">
+                       @Html.LabelFor(m => m.students.Katiba)
+                       @Html.DropDownListFor(m => m.students.Katiba, new SelectList(""), new { @class = "form-control", tabindex = 8, id = "katibalist" })
+                       @Html.ValidationMessageFor(m => m.students.Katiba)
+                   </div>
+                   <div class="col-sm-4 form-group">
+                       @Html.LabelFor(m => m.students.saria)
+                       @Html.DropDownListFor(m => m.students.saria, new SelectList(""), new { @class = "form-control", tabindex = 9, id = "sarialist" })
+                       @Html.ValidationMessageFor(m => m.students.saria)
+                   </div>
+                *@
+
+                <div class="row right">
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.Katiba)
+                        @Html.TextBoxFor(m => m.students.Katiba, new { @class = "form-control", tabindex = 20 })
+                        @Html.ValidationMessageFor(m => m.students.Katiba)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.saria)
+                        @Html.TextBoxFor(m => m.students.saria, new { @class = "form-control", tabindex = 21 })
+                        @Html.ValidationMessageFor(m => m.students.saria)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.Fasila)
+                        @Html.TextBoxFor(m => m.students.Fasila, new { @class = "form-control", tabindex = 22 })
+                        @Html.ValidationMessageFor(m => m.students.Fasila)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.group)
+                        @Html.TextBoxFor(m => m.students.group, new { @class = "form-control", tabindex = 23 })
+                        @Html.ValidationMessageFor(m => m.students.group)
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-sm-6 form-group">
+                        @Html.LabelFor(m => m.students.Nationality)
+                        @Html.TextBoxFor(m => m.students.Nationality, new { @class = "form-control", tabindex = 24, placeholder = "الجنسية" })
+                        @Html.ValidationMessageFor(m => m.students.Nationality)
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        @Html.LabelFor(m => m.students.SSN)
+                        @Html.TextBoxFor(m => m.students.SSN, new { @class = "form-control", tabindex = 25, Type = "Number", oninput = "validity.valid||(value='');", placeholder = "الرقم القومي" })
+                        @Html.ValidationMessageFor(m => m.students.SSN)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.students.Blood_Type)
+                    @Html.DropDownListFor(x => x.students.Blood_Type, new SelectList(Model.BloodType), "اختر فصيلة الدم", new { @class = "form-control", tabindex = 26, placeholder = "فصيلة الدم " })
+                    @Html.ValidationMessageFor(m => m.students.Blood_Type)
+                </div>
+
+                <div class="row right">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.Bodydetails.height)
+                        @Html.TextBoxFor(m => m.students.Bodydetails.height, new { @class = "form-control", tabindex = 27, placeholder = "الطول" })
+                        @Html.ValidationMessageFor(m => m.students.Bodydetails.height)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.Bodydetails.weight)
+                        @Html.TextBoxFor(m => m.students.Bodydetails.weight, new { @class = "form-control", tabindex = 28, placeholder = "الوزن" })
+                        @Html.ValidationMessageFor(m => m.students.Bodydetails.weight)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.Bodydetails.bodysymmetry)
+                        @Html.TextBoxFor(m => m.students.Bodydetails.bodysymmetry, new { @class = "form-control", tabindex = 29, placeholder = "التناسق" })
+                        @Html.ValidationMessageFor(m => m.students.Bodydetails.bodysymmetry)
+                    </div>
+                </div>
+                <div class="row right">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.Address)
+                        @Html.TextBoxFor(m => m.students.Address, new { @class = "form-control", tabindex = 30, placeholder = "العنوان" })
+                        @Html.ValidationMessageFor(m => m.students.Address)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.City)
+                        @Html.DropDownListFor(m => m.students.City, new SelectList(""), new { @class = "form-control", tabindex = 31, id = "citylist" })
+                        @Html.ValidationMessageFor(m => m.students.City)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.Post)
+                        @Html.DropDownListFor(m => m.students.Post, new SelectList(""), new { @class = "form-control", tabindex = 32, id = "postlist" })
+                        @Html.ValidationMessageFor(m => m.students.Post)
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        @Html.LabelFor(m => m.students.Mobile)
+                        @Html.TextBoxFor(m => m.students.Mobile, new { @class = "form-control", tabindex = 33, Type = "number", placeholder = "رقم الهاتف الاول " })
+                        @Html.ValidationMessageFor(m => m.students.Mobile)
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        @Html.LabelFor(m => m.students.secondNum)
+                        @Html.TextBoxFor(m => m.students.secondNum, new { @class = "form-control", tabindex = 34, Type = "number", placeholder = "رقم الهاتف الثاني " })
+                        @Html.ValidationMessageFor(m => m.students.secondNum)
+                    </div>
+
+                </div>
+
+                <div class="row right">
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.fathername)
+                        @Html.TextBoxFor(m => m.students.relative.fathername, new { @class = "form-control", tabindex = 35, placeholder = "اسم الوالد" })
+                        @Html.ValidationMessageFor(m => m.students.relative.fathername)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.fatherNum)
+                        @Html.TextBoxFor(m => m.students.relative.fatherNum, new { @class = "form-control", tabindex = 36 })
+                        @Html.ValidationMessageFor(m => m.students.relative.fatherNum)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.fatherJob)
+                        @Html.TextBoxFor(m => m.students.relative.fatherJob, new { @class = "form-control", tabindex = 37, placeholder = "وظيفة الوالد" })
+                        @Html.ValidationMessageFor(m => m.students.relative.fatherJob)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.fatherqualification)
+                        @Html.TextBoxFor(m => m.students.relative.fatherqualification, new { @class = "form-control", tabindex = 38, placeholder = "المؤهل" })
+                        @Html.ValidationMessageFor(m => m.students.relative.fatherqualification)
+                    </div>
+
+                </div>
+                <div class="row right">
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.mothername)
+                        @Html.TextBoxFor(m => m.students.relative.mothername, new { @class = "form-control", tabindex = 39, placeholder = "اسم الوالدة" })
+                        @Html.ValidationMessageFor(m => m.students.relative.mothername)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.mothernum)
+                        @Html.TextBoxFor(m => m.students.relative.mothernum, new { @class = "form-control", tabindex = 40, placeholder = "التليفون" })
+                        @Html.ValidationMessageFor(m => m.students.relative.mothernum)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.motherJob)
+                        @Html.TextBoxFor(m => m.students.relative.motherJob, new { @class = "form-control", tabindex = 41, placeholder = "الوظيفة" })
+                        @Html.ValidationMessageFor(m => m.students.relative.motherJob)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.motherqualification)
+                        @Html.TextBoxFor(m => m.students.relative.motherqualification, new { @class = "form-control", tabindex = 42, placeholder = "المؤهل" })
+                        @Html.ValidationMessageFor(m => m.students.relative.motherqualification)
+                    </div>
+
+                </div>
+                <div class="row right">
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.Responsable)
+                        @Html.TextBoxFor(m => m.students.relative.Responsable, new { @class = "form-control", tabindex = 43 })
+                        @Html.ValidationMessageFor(m => m.students.relative.Responsable)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.Address)
+                        @Html.TextBoxFor(m => m.students.relative.Address, new { @class = "form-control", tabindex = 44 })
+                        @Html.ValidationMessageFor(m => m.students.relative.Address)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.ResponsableNum)
+                        @Html.TextBoxFor(m => m.students.relative.ResponsableNum, new { @class = "form-control", tabindex = 45 })
+                        @Html.ValidationMessageFor(m => m.students.relative.ResponsableNum)
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        @Html.LabelFor(m => m.students.relative.ResponsableJob)
+                        @Html.TextBoxFor(m => m.students.relative.ResponsableJob, new { @class = "form-control", tabindex = 46 })
+                        @Html.ValidationMessageFor(m => m.students.relative.ResponsableJob)
+                    </div>
+
+                </div>
+                <div class="row right">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.relative.Relativename)
+                        @Html.TextBoxFor(m => m.students.relative.Relativename, new { @class = "form-control", tabindex = 47})
+                        @Html.ValidationMessageFor(m => m.students.relative.Relativename)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.relative.Relativeaddress)
+                        @Html.TextBoxFor(m => m.students.relative.Relativeaddress, new { @class = "form-control", tabindex = 48 })
+                        @Html.ValidationMessageFor(m => m.students.relative.Relativeaddress)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.relative.Relativenum)
+                        @Html.TextBoxFor(m => m.students.relative.Relativenum, new { @class = "form-control", tabindex = 49 })
+                        @Html.ValidationMessageFor(m => m.students.relative.Relativenum)
+                    </div>
+                </div>
+                <div class="row right">
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.relative.Relationship)
+                        @Html.TextBoxFor(m => m.students.relative.Relationship, new { @class = "form-control", tabindex = 50 })
+                        @Html.ValidationMessageFor(m => m.students.relative.Relationship)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.relative.Job)
+                        @Html.TextBoxFor(m => m.students.relative.Job, new { @class = "form-control", tabindex = 51 })
+                        @Html.ValidationMessageFor(m => m.students.relative.Job)
+                    </div>
+                    <div class="col-sm-4 form-group">
+                        @Html.LabelFor(m => m.students.relative.JobAddress)
+                        @Html.TextBoxFor(m => m.students.relative.JobAddress, new { @class = "form-control", tabindex = 52 })
+                        @Html.ValidationMessageFor(m => m.students.relative.JobAddress)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.students.Fburl)
+                    @Html.TextBoxFor(m => m.students.Fburl, new { @class = "form-control", tabindex = 53, placeholder = "" })
+                    @Html.ValidationMessageFor(m => m.students.Fburl)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.students.Email)
+                    @Html.TextBoxFor(m => m.students.Email, new { @class = "form-control", tabindex = 54, placeholder = "البريد الألكتروني" })
+                    @Html.ValidationMessageFor(m => m.students.Email)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.students.relative.TotalSalary)
+                    @Html.TextBoxFor(m => m.students.relative.TotalSalary, new { @class = "form-control", tabindex = 55, placeholder = "اجمالي دخل الاسرة" })
+                    @Html.ValidationMessageFor(m => m.students.relative.TotalSalary)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.students.Image)
+                    <input type="file" id="ImageFile" name="students.ImageFile" accept="image/jpeg, image/png" tabindex="34" />
+                    @Html.HiddenFor(m => m.students.Image)
+                    @Html.ValidationMessageFor(m => m.students.Image)
+                </div>
+            </div>
+                        @Html.HiddenFor(m => m.students.ID, new Dictionary<string, object> { { "data-val", false } })
+                        @Html.HiddenFor(m => m.students.City, new { id = "citydata" })
+                        @Html.HiddenFor(m => m.students.Post, new { id = "postdata" })
+                        @Html.AntiForgeryToken()
+                        <button type="submit" id="submit" class="btn btn-primary btn-lg" tabindex="35">تسجيل</button>
+
+                    }
+                </div>
+            </div>
+        </div>
+        @section scripts
+        {
+            @Scripts.Render("~/bundles/jqueryval")
+            <link rel="stylesheet" href="~/Content/jquery-ui.css">
+            <script src="~/Scripts/MTI/AddStudent.js">
+
+            </script>
+            <script>
+                $('#studentnum').keyup(function (e) {
+                    if ($(this).val() > 99999) {
+                        var str = $(this).val();
+                        e.preventDefault();
+                        var res = str.substring(0, 5);
+                        $(this).val(res);
+                        }
+
+                });
+
+                $('#gpa').keyup(function (e) {
+                    if ($(this).val() > 100 || $(this).val() < 0) {
+                        e.preventDefault();
+                        $(this).val(100);
+                    }
+                });
+            </script>
+            <script src="~/Scripts/jquary-ui.js"> </script>
+
+        }
+
+
+

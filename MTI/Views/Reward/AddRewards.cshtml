@@ -1,0 +1,65 @@
+﻿@model MTI.Models.Reward
+@{
+    ViewBag.Title = "AddRewards";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1 class="center well" style="text-align:center">أضافة مكافأة</h1>
+    <div class="field-validation-error">@ViewBag.ErrorMessage</div>
+    @using (Html.BeginForm("AddRewardss", "Reward"))
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-sm-12 right well">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Reward_reason)
+                @Html.TextAreaFor(m => m.Reward_reason, new { @class = "form-control", Type = "text" })
+                @Html.ValidationMessageFor(m => m.Reward_reason)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.WhoApplyIt)
+                @Html.TextBoxFor(m => m.WhoApplyIt, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(m => m.WhoApplyIt)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.reward)
+                @Html.TextBoxFor(m => m.reward, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(m => m.reward)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.plusGrades)
+                @Html.TextBoxFor(m => m.plusGrades, new { @class = "form-control", type = "number", oninput = "validity.valid||(value='');", id = "plus" })
+                @Html.ValidationMessageFor(m => m.plusGrades)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" id="submit" class="btn btn-primary btn-lg">تسجيل</button>
+            </div>
+        </div>
+    }
+</div>
+@section scripts{
+    <script src="~/Scripts/MTI/AddStudent.js"></script>
+    <script>
+    $('#plus').keyup(function (e) {
+        if ($(this).val() > 100 || $(this).val() < 0) {
+            e.preventDefault();
+            $(this).val(100);
+        }
+        });
+        $(function () {
+            $("#datepicker").datepicker();
+            $("#anim").on("change", function () {
+                $("#datepicker").datepicker("option", "showAnim", $(this).val());
+            });
+        });
+    </script>
+}

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html dir="rtl" style="font-family:Traditional Arabic;">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("Styles", false)
+
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="../content/fontawesome/css/all.min.css">
+</head>
+
+<body onload="myFunction()">
+    <!--
+        loader 
+        mydiv  and animate-bottom using for data load
+        
+        -->
+    <div id="loader"></div>
+
+    <div class="container-fluid animate-bottom"   id="myDiv" >
+        <div style="padding-left:0;padding-right:0;">@Html.Partial("_NavBar")</div>
+
+        <div class="container-fluid" style="padding-left:15px;padding-right:15px;">
+            @RenderBody()
+
+            <br />
+            <br />
+
+        </div>
+
+    </div>
+
+    <footer id="footer">
+
+        <div class="container-fluid navbar-fixed-bottom" style="height:70px;text-align:center;color:aliceblue;background-color:#00435d;display:inline-block;font-size:large">
+
+            <div dir="ltr" style="width:100%;background-color:#731010;" class="marquee" id="quee">
+
+                <ul style="width:100%;font-weight:bold;list-style-image:url('../../Content/Image/logo color203936240.ico');" id="newslist"></ul>
+
+            </div>
+
+            <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                &copy; @DateTime.Now.Year - فرع نظم المعلومات - المعهد الفني للقوات المسلحة
+            </p>
+        </div>
+
+    </footer>
+
+
+    @Scripts.Render("~/bundles/lib")
+    @RenderSection("scripts", required: false)
+
+    
+    <script>
+
+        $(function () {
+            $.ajax({
+                type: "get",
+                url: "/api/newsApi/GetNews",
+                success(data) {
+                    for (var news = 0; news < data.length; news++)
+                        $("#newslist").append('<li>' + data[news].Details + '(' + data[news].category + ')' + '<img  style="width:15px ;height:15px;" src="../Content/Image/logo color203936240.ico" alt=""></li > ');
+                    marquee();
+                },
+                error(data) {
+                    for (var ss = 0; ss < 4; ss++)
+                        $("#newslist").append('<li> حدث خطأ اثناء استدعاء البيانات</li >');
+                    marquee();
+
+                }
+            });
+        });
+
+        function marquee() {
+            $(".marquee").marquee({
+                duration: 10000,
+                //gap in pixels between the tickers
+                gap: 5,
+                startVisible: true,
+                // On cycle pause the marquee
+                pauseOnCycle: 1000,                //time in milliseconds before the marquee will start animating
+                delayBeforeStart: 0,
+                //'left' or 'right'
+                direction: 'right',
+                pauseOnHover: true,
+                //true or false - should the marquee be duplicated to show an effect of continues flow
+            });
+        }
+
+        var myVar;
+
+        function myFunction() {
+            myVar = setTimeout(showPage, 500);
+        }
+
+        function showPage() {
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

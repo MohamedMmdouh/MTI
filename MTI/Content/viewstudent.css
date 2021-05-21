@@ -1,0 +1,26 @@
+﻿
+a{
+    visibility:hidden;
+}
+button{
+    visibility:hidden;
+}
+div .data{
+    visibility:visible;
+}
+.hidden {
+    visibility: visible;
+}
+body {
+    direction: rtl;
+    padding: 15px;
+    border-style: solid;
+    background-color: burlywood;
+}
+.watermark {
+    opacity: 0.5;
+    color: BLACK;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

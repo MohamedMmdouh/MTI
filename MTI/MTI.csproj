@@ -1,0 +1,1422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{134BFD02-F078-4BF5-89AD-5686C172B142}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MTI</RootNamespace>
+    <AssemblyName>MTI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="GSMCommServer, Version=1.21.0.0, Culture=neutral, PublicKeyToken=515d87df384dcc81, processorArchitecture=MSIL">
+      <HintPath>..\packages\GSMComm.1.21.1\lib\GSMCommServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GSMCommShared, Version=1.21.0.0, Culture=neutral, PublicKeyToken=515d87df384dcc81, processorArchitecture=MSIL">
+      <HintPath>..\packages\GSMComm.1.21.1\lib\GSMCommShared.dll</HintPath>
+    </Reference>
+    <Reference Include="GSMCommunication, Version=1.21.0.0, Culture=neutral, PublicKeyToken=515d87df384dcc81, processorArchitecture=MSIL">
+      <HintPath>..\packages\GSMComm.1.21.1\lib\GSMCommunication.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PDUConverter, Version=1.21.0.0, Culture=neutral, PublicKeyToken=515d87df384dcc81, processorArchitecture=MSIL">
+      <HintPath>..\packages\GSMComm.1.21.1\lib\PDUConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.1.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\DailyattendanceController.cs" />
+    <Compile Include="Controllers\Api\NewsApiController.cs" />
+    <Compile Include="Controllers\Api\PostController.cs" />
+    <Compile Include="Controllers\Api\PunshimentController.cs" />
+    <Compile Include="Controllers\Api\StudentController.cs" />
+    <Compile Include="Controllers\AttachmentController.cs" />
+    <Compile Include="Controllers\AttendancesController.cs" />
+    <Compile Include="Controllers\Daily_attendanceController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeadController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageInstituteController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\MyPrincipal.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PDFController.cs" />
+    <Compile Include="Controllers\PunshimentController.cs" />
+    <Compile Include="Controllers\RelativesController.cs" />
+    <Compile Include="Controllers\RewardController.cs" />
+    <Compile Include="Controllers\ShootingController.cs" />
+    <Compile Include="Controllers\SituationsController.cs" />
+    <Compile Include="Controllers\specializationsController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
+    <Compile Include="Customdata\StudentsArabicdata.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Arabicdate.cs" />
+    <Compile Include="Helpers\Booldtypelist.cs" />
+    <Compile Include="Helpers\DatatableView.cs" />
+    <Compile Include="Helpers\Enum\Qualifications.cs" />
+    <Compile Include="Helpers\Enum\Religion.cs" />
+    <Compile Include="Helpers\Img\Image.cs" />
+    <Compile Include="Helpers\Messages\SMS.cs" />
+    <Compile Include="Helpers\Min16Years.cs" />
+    <Compile Include="Helpers\punshimentcastmodel.cs" />
+    <Compile Include="Helpers\Relativecastmodel.cs" />
+    <Compile Include="Helpers\rewardcastmodel.cs" />
+    <Compile Include="Helpers\Shootingcastmodel.cs" />
+    <Compile Include="Helpers\studentcast.cs" />
+    <Compile Include="Migrations\202007121706519_checker.cs" />
+    <Compile Include="Migrations\202007121706519_checker.Designer.cs">
+      <DependentUpon>202007121706519_checker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007121708107_checker1.cs" />
+    <Compile Include="Migrations\202007121708107_checker1.Designer.cs">
+      <DependentUpon>202007121708107_checker1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007121715254_checker2.cs" />
+    <Compile Include="Migrations\202007121715254_checker2.Designer.cs">
+      <DependentUpon>202007121715254_checker2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007150941185_RewardAndPunshiment.cs" />
+    <Compile Include="Migrations\202007150941185_RewardAndPunshiment.Designer.cs">
+      <DependentUpon>202007150941185_RewardAndPunshiment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007181206524_reward.cs" />
+    <Compile Include="Migrations\202007181206524_reward.Designer.cs">
+      <DependentUpon>202007181206524_reward.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007181208193_reward1.cs" />
+    <Compile Include="Migrations\202007181208193_reward1.Designer.cs">
+      <DependentUpon>202007181208193_reward1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007271938233_ss.cs" />
+    <Compile Include="Migrations\202007271938233_ss.Designer.cs">
+      <DependentUpon>202007271938233_ss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007282022461_ss1.cs" />
+    <Compile Include="Migrations\202007282022461_ss1.Designer.cs">
+      <DependentUpon>202007282022461_ss1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291045330_addbatch.cs" />
+    <Compile Include="Migrations\202007291045330_addbatch.Designer.cs">
+      <DependentUpon>202007291045330_addbatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291052488_addbatchtostudent.cs" />
+    <Compile Include="Migrations\202007291052488_addbatchtostudent.Designer.cs">
+      <DependentUpon>202007291052488_addbatchtostudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291055589_adddatesofgraduation.cs" />
+    <Compile Include="Migrations\202007291055589_adddatesofgraduation.Designer.cs">
+      <DependentUpon>202007291055589_adddatesofgraduation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291113154_addEnumReligion.cs" />
+    <Compile Include="Migrations\202007291113154_addEnumReligion.Designer.cs">
+      <DependentUpon>202007291113154_addEnumReligion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291203127_addEnumQulaifications.cs" />
+    <Compile Include="Migrations\202007291203127_addEnumQulaifications.Designer.cs">
+      <DependentUpon>202007291203127_addEnumQulaifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291204160_addEnumQulaifications1.cs" />
+    <Compile Include="Migrations\202007291204160_addEnumQulaifications1.Designer.cs">
+      <DependentUpon>202007291204160_addEnumQulaifications1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007291204302_addEnumQulaifications2.cs" />
+    <Compile Include="Migrations\202007291204302_addEnumQulaifications2.Designer.cs">
+      <DependentUpon>202007291204302_addEnumQulaifications2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300124296_lastupdate.cs" />
+    <Compile Include="Migrations\202007300124296_lastupdate.Designer.cs">
+      <DependentUpon>202007300124296_lastupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300217024_cityandpost.cs" />
+    <Compile Include="Migrations\202007300217024_cityandpost.Designer.cs">
+      <DependentUpon>202007300217024_cityandpost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300632456_Removequalifica.cs" />
+    <Compile Include="Migrations\202007300632456_Removequalifica.Designer.cs">
+      <DependentUpon>202007300632456_Removequalifica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300633532_Readdqualifica.cs" />
+    <Compile Include="Migrations\202007300633532_Readdqualifica.Designer.cs">
+      <DependentUpon>202007300633532_Readdqualifica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300635153_addEnumReligion1.cs" />
+    <Compile Include="Migrations\202007300635153_addEnumReligion1.Designer.cs">
+      <DependentUpon>202007300635153_addEnumReligion1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300637174_removereligion.cs" />
+    <Compile Include="Migrations\202007300637174_removereligion.Designer.cs">
+      <DependentUpon>202007300637174_removereligion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300637361_readdreligion.cs" />
+    <Compile Include="Migrations\202007300637361_readdreligion.Designer.cs">
+      <DependentUpon>202007300637361_readdreligion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007300646331_new.cs" />
+    <Compile Include="Migrations\202007300646331_new.Designer.cs">
+      <DependentUpon>202007300646331_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301318383_city.cs" />
+    <Compile Include="Migrations\202007301318383_city.Designer.cs">
+      <DependentUpon>202007301318383_city.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301319401_post.cs" />
+    <Compile Include="Migrations\202007301319401_post.Designer.cs">
+      <DependentUpon>202007301319401_post.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301328033_postaa.cs" />
+    <Compile Include="Migrations\202007301328033_postaa.Designer.cs">
+      <DependentUpon>202007301328033_postaa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301331494_poskkk.cs" />
+    <Compile Include="Migrations\202007301331494_poskkk.Designer.cs">
+      <DependentUpon>202007301331494_poskkk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301332545_poskkky.cs" />
+    <Compile Include="Migrations\202007301332545_poskkky.Designer.cs">
+      <DependentUpon>202007301332545_poskkky.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301342372_changes.cs" />
+    <Compile Include="Migrations\202007301342372_changes.Designer.cs">
+      <DependentUpon>202007301342372_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301415221_cityandpost1.cs" />
+    <Compile Include="Migrations\202007301415221_cityandpost1.Designer.cs">
+      <DependentUpon>202007301415221_cityandpost1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301421337_cityandposts.cs" />
+    <Compile Include="Migrations\202007301421337_cityandposts.Designer.cs">
+      <DependentUpon>202007301421337_cityandposts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301423076_cityandposts1.cs" />
+    <Compile Include="Migrations\202007301423076_cityandposts1.Designer.cs">
+      <DependentUpon>202007301423076_cityandposts1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007301429365_cityandpoststring.cs" />
+    <Compile Include="Migrations\202007301429365_cityandpoststring.Designer.cs">
+      <DependentUpon>202007301429365_cityandpoststring.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008010352245_removeenum.cs" />
+    <Compile Include="Migrations\202008010352245_removeenum.Designer.cs">
+      <DependentUpon>202008010352245_removeenum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008021035180_postandcity.cs" />
+    <Compile Include="Migrations\202008021035180_postandcity.Designer.cs">
+      <DependentUpon>202008021035180_postandcity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008021040259_postandcity-force.cs" />
+    <Compile Include="Migrations\202008021040259_postandcity-force.Designer.cs">
+      <DependentUpon>202008021040259_postandcity-force.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008040849496_change.cs" />
+    <Compile Include="Migrations\202008040849496_change.Designer.cs">
+      <DependentUpon>202008040849496_change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008050857292_fb.cs" />
+    <Compile Include="Migrations\202008050857292_fb.Designer.cs">
+      <DependentUpon>202008050857292_fb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008120946366_usernamelogin.cs" />
+    <Compile Include="Migrations\202008120946366_usernamelogin.Designer.cs">
+      <DependentUpon>202008120946366_usernamelogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008121221075_behaviour.cs" />
+    <Compile Include="Migrations\202008121221075_behaviour.Designer.cs">
+      <DependentUpon>202008121221075_behaviour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008121223367_behaviour1.cs" />
+    <Compile Include="Migrations\202008121223367_behaviour1.Designer.cs">
+      <DependentUpon>202008121223367_behaviour1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008121227113_grades.cs" />
+    <Compile Include="Migrations\202008121227113_grades.Designer.cs">
+      <DependentUpon>202008121227113_grades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008181237342_Relative.cs" />
+    <Compile Include="Migrations\202008181237342_Relative.Designer.cs">
+      <DependentUpon>202008181237342_Relative.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008181244062_RelativeRelation.cs" />
+    <Compile Include="Migrations\202008181244062_RelativeRelation.Designer.cs">
+      <DependentUpon>202008181244062_RelativeRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008181254200_RemoveRelative.cs" />
+    <Compile Include="Migrations\202008181254200_RemoveRelative.Designer.cs">
+      <DependentUpon>202008181254200_RemoveRelative.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008181257371_ReaddRelative.cs" />
+    <Compile Include="Migrations\202008181257371_ReaddRelative.Designer.cs">
+      <DependentUpon>202008181257371_ReaddRelative.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008181301041_ReaddRelation.cs" />
+    <Compile Include="Migrations\202008181301041_ReaddRelation.Designer.cs">
+      <DependentUpon>202008181301041_ReaddRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008190950362_dbidgeneration.cs" />
+    <Compile Include="Migrations\202008190950362_dbidgeneration.Designer.cs">
+      <DependentUpon>202008190950362_dbidgeneration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008190953098_dbidgeneration1.cs" />
+    <Compile Include="Migrations\202008190953098_dbidgeneration1.Designer.cs">
+      <DependentUpon>202008190953098_dbidgeneration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008210939571_checkerrr.cs" />
+    <Compile Include="Migrations\202008210939571_checkerrr.Designer.cs">
+      <DependentUpon>202008210939571_checkerrr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211003137_sss.cs" />
+    <Compile Include="Migrations\202008211003137_sss.Designer.cs">
+      <DependentUpon>202008211003137_sss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211005432_asdasd.cs" />
+    <Compile Include="Migrations\202008211005432_asdasd.Designer.cs">
+      <DependentUpon>202008211005432_asdasd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211008340_asdasdss.cs" />
+    <Compile Include="Migrations\202008211008340_asdasdss.Designer.cs">
+      <DependentUpon>202008211008340_asdasdss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211304533_asdasdsad.cs" />
+    <Compile Include="Migrations\202008211304533_asdasdsad.Designer.cs">
+      <DependentUpon>202008211304533_asdasdsad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211523341_changeRelativeForignkey.cs" />
+    <Compile Include="Migrations\202008211523341_changeRelativeForignkey.Designer.cs">
+      <DependentUpon>202008211523341_changeRelativeForignkey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211536460_changeRelativeForignkeyss.cs" />
+    <Compile Include="Migrations\202008211536460_changeRelativeForignkeyss.Designer.cs">
+      <DependentUpon>202008211536460_changeRelativeForignkeyss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008220713054_changeRelativeForignkeyssdd.cs" />
+    <Compile Include="Migrations\202008220713054_changeRelativeForignkeyssdd.Designer.cs">
+      <DependentUpon>202008220713054_changeRelativeForignkeyssdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008221437514_removeresad.cs" />
+    <Compile Include="Migrations\202008221437514_removeresad.Designer.cs">
+      <DependentUpon>202008221437514_removeresad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008221449380_Add-relative-tostudent.cs" />
+    <Compile Include="Migrations\202008221449380_Add-relative-tostudent.Designer.cs">
+      <DependentUpon>202008221449380_Add-relative-tostudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008222015266_Add-situations.cs" />
+    <Compile Include="Migrations\202008222015266_Add-situations.Designer.cs">
+      <DependentUpon>202008222015266_Add-situations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008230750095_connectSituationstostud.cs" />
+    <Compile Include="Migrations\202008230750095_connectSituationstostud.Designer.cs">
+      <DependentUpon>202008230750095_connectSituationstostud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008231310023_team-relative.cs" />
+    <Compile Include="Migrations\202008231310023_team-relative.Designer.cs">
+      <DependentUpon>202008231310023_team-relative.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008301937064_Edit-relative.cs" />
+    <Compile Include="Migrations\202008301937064_Edit-relative.Designer.cs">
+      <DependentUpon>202008301937064_Edit-relative.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009221523432_news.cs" />
+    <Compile Include="Migrations\202009221523432_news.Designer.cs">
+      <DependentUpon>202009221523432_news.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009221546453_newsss.cs" />
+    <Compile Include="Migrations\202009221546453_newsss.Designer.cs">
+      <DependentUpon>202009221546453_newsss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009260745080_float.cs" />
+    <Compile Include="Migrations\202009260745080_float.Designer.cs">
+      <DependentUpon>202009260745080_float.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010171011146_date.cs" />
+    <Compile Include="Migrations\202010171011146_date.Designer.cs">
+      <DependentUpon>202010171011146_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010171013407_date1.cs" />
+    <Compile Include="Migrations\202010171013407_date1.Designer.cs">
+      <DependentUpon>202010171013407_date1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011080835133_Messages.cs" />
+    <Compile Include="Migrations\202011080835133_Messages.Designer.cs">
+      <DependentUpon>202011080835133_Messages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011080841250_Messages1.cs" />
+    <Compile Include="Migrations\202011080841250_Messages1.Designer.cs">
+      <DependentUpon>202011080841250_Messages1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011211002027_attachments.cs" />
+    <Compile Include="Migrations\202011211002027_attachments.Designer.cs">
+      <DependentUpon>202011211002027_attachments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011221949055_attachments1.cs" />
+    <Compile Include="Migrations\202011221949055_attachments1.Designer.cs">
+      <DependentUpon>202011221949055_attachments1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012241208455_checker123.cs" />
+    <Compile Include="Migrations\202012241208455_checker123.Designer.cs">
+      <DependentUpon>202012241208455_checker123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301122505_addlevel-to-punshiment.cs" />
+    <Compile Include="Migrations\202101301122505_addlevel-to-punshiment.Designer.cs">
+      <DependentUpon>202101301122505_addlevel-to-punshiment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102010732413_shootinglevel.cs" />
+    <Compile Include="Migrations\202102010732413_shootinglevel.Designer.cs">
+      <DependentUpon>202102010732413_shootinglevel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102020541492_Editstudgraduatedate.cs" />
+    <Compile Include="Migrations\202102020541492_Editstudgraduatedate.Designer.cs">
+      <DependentUpon>202102020541492_Editstudgraduatedate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041107408_UPDATE-STUDENT.cs" />
+    <Compile Include="Migrations\202102041107408_UPDATE-STUDENT.Designer.cs">
+      <DependentUpon>202102041107408_UPDATE-STUDENT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102071909347_update-lwatalaba.cs" />
+    <Compile Include="Migrations\202102071909347_update-lwatalaba.Designer.cs">
+      <DependentUpon>202102071909347_update-lwatalaba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102071912462_update-datequalif.cs" />
+    <Compile Include="Migrations\202102071912462_update-datequalif.Designer.cs">
+      <DependentUpon>202102071912462_update-datequalif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102071927054_update-date2.cs" />
+    <Compile Include="Migrations\202102071927054_update-date2.Designer.cs">
+      <DependentUpon>202102071927054_update-date2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102081107054_addbodydetailstable.cs" />
+    <Compile Include="Migrations\202102081107054_addbodydetailstable.Designer.cs">
+      <DependentUpon>202102081107054_addbodydetailstable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102081119258_update-dd.cs" />
+    <Compile Include="Migrations\202102081119258_update-dd.Designer.cs">
+      <DependentUpon>202102081119258_update-dd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102081950312_update-dds.cs" />
+    <Compile Include="Migrations\202102081950312_update-dds.Designer.cs">
+      <DependentUpon>202102081950312_update-dds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102082210493_update-punshiment.cs" />
+    <Compile Include="Migrations\202102082210493_update-punshiment.Designer.cs">
+      <DependentUpon>202102082210493_update-punshiment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102090636106_update-punshiment-2.cs" />
+    <Compile Include="Migrations\202102090636106_update-punshiment-2.Designer.cs">
+      <DependentUpon>202102090636106_update-punshiment-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102110844265_kkjk.cs" />
+    <Compile Include="Migrations\202102110844265_kkjk.Designer.cs">
+      <DependentUpon>202102110844265_kkjk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102110847180_kkjk1.cs" />
+    <Compile Include="Migrations\202102110847180_kkjk1.Designer.cs">
+      <DependentUpon>202102110847180_kkjk1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102121143353_punshimant-status.cs" />
+    <Compile Include="Migrations\202102121143353_punshimant-status.Designer.cs">
+      <DependentUpon>202102121143353_punshimant-status.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102141635333_attend.cs" />
+    <Compile Include="Migrations\202102141635333_attend.Designer.cs">
+      <DependentUpon>202102141635333_attend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102141649289_attendd.cs" />
+    <Compile Include="Migrations\202102141649289_attendd.Designer.cs">
+      <DependentUpon>202102141649289_attendd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102141650060_attendd1.cs" />
+    <Compile Include="Migrations\202102141650060_attendd1.Designer.cs">
+      <DependentUpon>202102141650060_attendd1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AbsantDepart.cs" />
+    <Compile Include="Models\AbsantDetails.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdditionalData.cs" />
+    <Compile Include="Models\Attachments.cs" />
+    <Compile Include="Models\Batch.cs" />
+    <Compile Include="Models\bodydetails.cs" />
+    <Compile Include="Models\cities.cs" />
+    <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\daily-attendance.cs" />
+    <Compile Include="Models\fitness.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\post.cs" />
+    <Compile Include="Models\punishment.cs" />
+    <Compile Include="Models\Qualifications.cs" />
+    <Compile Include="Models\Relative.cs" />
+    <Compile Include="Models\Reward.cs" />
+    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\Shooting.cs" />
+    <Compile Include="Models\Situations.cs" />
+    <Compile Include="Models\specialization.cs" />
+    <Compile Include="Models\Students.cs" />
+    <Compile Include="Models\test.cs" />
+    <Compile Include="Models\UserRoles.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\weightandheight.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\DailyattendanceViewModel.cs" />
+    <Compile Include="ViewModel\PunshimentViewModel.cs" />
+    <Compile Include="ViewModel\StudentViewModel.cs" />
+    <Compile Include="ViewModel\StudnetNum.cs" />
+    <Compile Include="ViewModel\ViewModelStudent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\Bootstrap-spacelap.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\commingsoon.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\autoFill.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.css" />
+    <Content Include="Content\DataTables\css\autoFill.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.css" />
+    <Content Include="Content\DataTables\css\autoFill.foundation.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.css" />
+    <Content Include="Content\DataTables\css\autoFill.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.css" />
+    <Content Include="Content\DataTables\css\autoFill.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\buttons.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.css" />
+    <Content Include="Content\DataTables\css\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.css" />
+    <Content Include="Content\DataTables\css\buttons.foundation.min.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.css" />
+    <Content Include="Content\DataTables\css\buttons.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.css" />
+    <Content Include="Content\DataTables\css\buttons.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\colReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\colReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\colReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\colReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\colReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.css" />
+    <Content Include="Content\DataTables\css\dataTables.foundation.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.css" />
+    <Content Include="Content\DataTables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.css" />
+    <Content Include="Content\DataTables\css\dataTables.material.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.css" />
+    <Content Include="Content\DataTables\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.css" />
+    <Content Include="Content\DataTables\css\dataTables.uikit.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedColumns.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.foundation.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.css" />
+    <Content Include="Content\DataTables\css\fixedHeader.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\keyTable.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.css" />
+    <Content Include="Content\DataTables\css\keyTable.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.css" />
+    <Content Include="Content\DataTables\css\keyTable.foundation.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.css" />
+    <Content Include="Content\DataTables\css\keyTable.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.css" />
+    <Content Include="Content\DataTables\css\keyTable.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\responsive.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.css" />
+    <Content Include="Content\DataTables\css\responsive.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.css" />
+    <Content Include="Content\DataTables\css\responsive.foundation.min.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.css" />
+    <Content Include="Content\DataTables\css\responsive.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.css" />
+    <Content Include="Content\DataTables\css\responsive.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowGroup.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowGroup.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.css" />
+    <Content Include="Content\DataTables\css\rowGroup.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowGroup.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\rowReorder.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.css" />
+    <Content Include="Content\DataTables\css\rowReorder.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.css" />
+    <Content Include="Content\DataTables\css\rowReorder.foundation.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.css" />
+    <Content Include="Content\DataTables\css\rowReorder.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\scroller.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.css" />
+    <Content Include="Content\DataTables\css\scroller.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.css" />
+    <Content Include="Content\DataTables\css\scroller.foundation.min.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.css" />
+    <Content Include="Content\DataTables\css\scroller.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.css" />
+    <Content Include="Content\DataTables\css\scroller.semanticui.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap.min.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.css" />
+    <Content Include="Content\DataTables\css\select.bootstrap4.min.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.css" />
+    <Content Include="Content\DataTables\css\select.dataTables.min.css" />
+    <Content Include="Content\DataTables\css\select.foundation.css" />
+    <Content Include="Content\DataTables\css\select.foundation.min.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.css" />
+    <Content Include="Content\DataTables\css\select.jqueryui.min.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.css" />
+    <Content Include="Content\DataTables\css\select.semanticui.min.css" />
+    <Content Include="Content\DataTables\images\details_close.png" />
+    <Content Include="Content\DataTables\images\details_open.png" />
+    <Content Include="Content\DataTables\images\sort_asc.png" />
+    <Content Include="Content\DataTables\images\sort_asc_disabled.png" />
+    <Content Include="Content\DataTables\images\sort_both.png" />
+    <Content Include="Content\DataTables\images\sort_desc.png" />
+    <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
+    <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Image\1 %282%29.PNG" />
+    <Content Include="Content\Image\1.JPG" />
+    <Content Include="Content\Image\11295930_1616567801923132_4967076359404113535_n.jpg" />
+    <Content Include="Content\Image\2.JPG" />
+    <Content Include="Content\Image\2.png" />
+    <Content Include="Content\Image\2014-635389735383270864-327_main.jpg" />
+    <Content Include="Content\Image\3 %282%29.JPG" />
+    <Content Include="Content\Image\3.JPG" />
+    <Content Include="Content\Image\bb204155342.png" />
+    <Content Include="Content\Image\DSC_0005 %282%29.JPG" />
+    <Content Include="Content\Image\DSC_0080 %282%29.JPG" />
+    <Content Include="Content\Image\DSC_0156.JPG" />
+    <Content Include="Content\Image\DSC_7371.JPG" />
+    <Content Include="Content\Image\f0395688.jpg" />
+    <Content Include="Content\Image\f10857720.jpg" />
+    <Content Include="Content\Image\IMG_4816.JPG" />
+    <Content Include="Content\Image\logo color203936240.ico" />
+    <Content Include="Content\Image\logo color203936240.jpg" />
+    <Content Include="Content\Image\logo color204144382.jpg" />
+    <Content Include="Content\Image\Screenshot    %281%29.png" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\student-profile.css" />
+    <Content Include="Content\StyleSheet1.css" />
+    <Content Include="Content\Style\Attened\create.css" />
+    <Content Include="Content\Style\Home\Index.css" />
+    <Content Include="Content\Style\Account\Login.css" />
+    <Content Include="Content\Style\Main.css" />
+    <Content Include="Content\Style\Message.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\viewstudent.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Image\bb204155342.png" />
+    <Content Include="Image\Untitled-1203549403203127002.jpg" />
+    <Content Include="Image\logo color203936240.jpg" />
+    <Content Include="Image\logo color204144382.jpg" />
+    <Content Include="Image\logo color204202343.jpg" />
+    <Content Include="Image\logo200319938.png" />
+    <Content Include="Image\logo200346325.png" />
+    <Content Include="Image\logo200437066.png" />
+    <Content Include="Image\logo200518479.png" />
+    <Content Include="Image\logo203236965.png" />
+    <Content Include="Image\logo203918212.png" />
+    <Content Include="Image\logo203926790.png" />
+    <Content Include="Image\logo204107018.png" />
+    <Content Include="Image\logo204130713.png" />
+    <Content Include="Image\logo204137653.png" />
+    <Content Include="Image\logo204225270.png" />
+    <Content Include="Image\logo204409403.png" />
+    <Content Include="Image\شعار_المعهد_الفني_للقوات_المسلحة_%28مصر%29204217666.jpg" />
+    <Content Include="Scripts\animate\animatetexttype.js" />
+    <Content Include="Scripts\animate\easing.js" />
+    <Content Include="Scripts\animate\ityped.js" />
+    <Content Include="Scripts\bootbox.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\DataTables\css\semanticui.scss" />
+    <Content Include="Content\DataTables\css\mixins.scss" />
+    <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="fonts\arialuni.ttf" />
+    <Content Include="Content\DataTables\language\arabic.json" />
+    <Content Include="Helpers\Json\json.json" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="pdf\نائب مدير المعهد الفني للقوات المسلحة.pdf" />
+    <Content Include="pdf\cv.pdf" />
+    <Content Include="Helpers\Json\Kataib-saraia.json" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Cavans.js" />
+    <Content Include="Scripts\contact_me.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\autoFill.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.js" />
+    <Content Include="Scripts\DataTables\autoFill.foundation.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.js" />
+    <Content Include="Scripts\DataTables\autoFill.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.js" />
+    <Content Include="Scripts\DataTables\autoFill.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\buttons.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.js" />
+    <Content Include="Scripts\DataTables\buttons.colVis.min.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.js" />
+    <Content Include="Scripts\DataTables\buttons.flash.min.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.js" />
+    <Content Include="Scripts\DataTables\buttons.foundation.min.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.js" />
+    <Content Include="Scripts\DataTables\buttons.html5.min.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.js" />
+    <Content Include="Scripts\DataTables\buttons.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\buttons.print.js" />
+    <Content Include="Scripts\DataTables\buttons.print.min.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.js" />
+    <Content Include="Scripts\DataTables\buttons.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.js" />
+    <Content Include="Scripts\DataTables\dataTables.autoFill.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.js" />
+    <Content Include="Scripts\DataTables\dataTables.buttons.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.colReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedColumns.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\DataTables\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.js" />
+    <Content Include="Scripts\DataTables\dataTables.foundation.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.js" />
+    <Content Include="Scripts\DataTables\dataTables.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.js" />
+    <Content Include="Scripts\DataTables\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.js" />
+    <Content Include="Scripts\DataTables\dataTables.material.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.js" />
+    <Content Include="Scripts\DataTables\dataTables.responsive.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowGroup.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.js" />
+    <Content Include="Scripts\DataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.js" />
+    <Content Include="Scripts\DataTables\dataTables.scroller.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.js" />
+    <Content Include="Scripts\DataTables\dataTables.select.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.js" />
+    <Content Include="Scripts\DataTables\dataTables.semanticui.min.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.js" />
+    <Content Include="Scripts\DataTables\dataTables.uikit.min.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.js" />
+    <Content Include="Scripts\DataTables\jquery.dataTables.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap.min.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.js" />
+    <Content Include="Scripts\DataTables\responsive.bootstrap4.min.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.js" />
+    <Content Include="Scripts\DataTables\responsive.foundation.min.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.js" />
+    <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.js" />
+    <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\jquery.marquee.js" />
+    <Content Include="Scripts\jquery.marquee.min.js" />
+    <Content Include="Scripts\MTI\Account\Login.js" />
+    <Content Include="Scripts\MTI\Home\Index.js" />
+    <Content Include="Scripts\MTI\Main\Main.js" />
+    <Content Include="Scripts\print.js" />
+    <Content Include="Scripts\jquary-ui.js" />
+    <Content Include="Scripts\jquary.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jspdf.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\MTI\AddStudent.js" />
+    <Content Include="Scripts\printThis.js" />
+    <Content Include="Scripts\studindex.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ManageInstitute\Index.cshtml" />
+    <Content Include="Views\Students\Index.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Students\New.cshtml" />
+    <Content Include="Views\Daily_attendance\Index.cshtml" />
+    <Content Include="Views\Daily_attendance\dailyattendance.cshtml" />
+    <Content Include="Views\Daily_attendance\Item.cshtml" />
+    <Content Include="Views\Daily_attendance\ViewAttendanceDetails.cshtml" />
+    <Content Include="Views\Shooting\AddData.cshtml" />
+    <Content Include="Views\Reward\AddReward.cshtml" />
+    <Content Include="Views\Punshiment\AddPunshiment.cshtml" />
+    <Content Include="Views\Punshiment\Index.cshtml" />
+    <Content Include="Views\Students\ViewStudent.cshtml" />
+    <Content Include="Views\Punshiment\Addpunshiments.cshtml" />
+    <Content Include="Views\Reward\AddRewards.cshtml" />
+    <Content Include="Views\Punshiment\Update.cshtml" />
+    <Content Include="Views\Reward\Index.cshtml" />
+    <Content Include="Views\Reward\Update.cshtml" />
+    <Content Include="Views\Shooting\Index.cshtml" />
+    <Content Include="Views\Students\Readonlystudent.cshtml" />
+    <Content Include="Views\Daily_attendance\DailyattendenceViewOnly.cshtml" />
+    <Content Include="Views\Punshiment\punshimentsReadonly.cshtml" />
+    <Content Include="Views\Reward\RewardsViewonly.cshtml" />
+    <Content Include="Views\Shooting\Update.cshtml" />
+    <Content Include="Views\specializations\Create.cshtml" />
+    <Content Include="Views\specializations\Delete.cshtml" />
+    <Content Include="Views\specializations\Details.cshtml" />
+    <Content Include="Views\specializations\Edit.cshtml" />
+    <Content Include="Views\specializations\Index.cshtml" />
+    <Content Include="Views\Students\studentbehaviour.cshtml" />
+    <Content Include="Views\Students\StudentCard.cshtml" />
+    <Content Include="Views\Students\data.cshtml" />
+    <Content Include="Views\Relatives\Relatives.cshtml" />
+    <Content Include="Views\Situations\Create.cshtml" />
+    <Content Include="Views\Situations\Delete.cshtml" />
+    <Content Include="Views\Situations\Details.cshtml" />
+    <Content Include="Views\Situations\Edit.cshtml" />
+    <Content Include="Views\Situations\Index.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Home\marquee.cshtml" />
+    <Content Include="Views\Leaders\manager.cshtml" />
+    <Content Include="Views\Lead\Index.cshtml" />
+    <Content Include="Views\Home\commingsoon.cshtml" />
+    <Content Include="Views\Students\ControlPanael.cshtml" />
+    <Content Include="Views\Relatives\MessageCenter.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Attachment\Create.cshtml" />
+    <Content Include="Views\Attachment\Index.cshtml" />
+    <Content Include="Views\Students\wasikatT3arf.cshtml" />
+    <Content Include="Views\Students\StudentMainInfo.cshtml" />
+    <Content Include="Views\Reward\Removepunshiment.cshtml" />
+    <Content Include="Views\Attendances\Create.cshtml" />
+    <Content Include="Views\Attendances\Delete.cshtml" />
+    <Content Include="Views\Attendances\Details.cshtml" />
+    <Content Include="Views\Attendances\Edit.cshtml" />
+    <Content Include="Views\Attendances\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Attachments\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202007121706519_checker.resx">
+      <DependentUpon>202007121706519_checker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007121708107_checker1.resx">
+      <DependentUpon>202007121708107_checker1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007121715254_checker2.resx">
+      <DependentUpon>202007121715254_checker2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007150941185_RewardAndPunshiment.resx">
+      <DependentUpon>202007150941185_RewardAndPunshiment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007181206524_reward.resx">
+      <DependentUpon>202007181206524_reward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007181208193_reward1.resx">
+      <DependentUpon>202007181208193_reward1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007271938233_ss.resx">
+      <DependentUpon>202007271938233_ss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007282022461_ss1.resx">
+      <DependentUpon>202007282022461_ss1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291045330_addbatch.resx">
+      <DependentUpon>202007291045330_addbatch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291052488_addbatchtostudent.resx">
+      <DependentUpon>202007291052488_addbatchtostudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291055589_adddatesofgraduation.resx">
+      <DependentUpon>202007291055589_adddatesofgraduation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291113154_addEnumReligion.resx">
+      <DependentUpon>202007291113154_addEnumReligion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291203127_addEnumQulaifications.resx">
+      <DependentUpon>202007291203127_addEnumQulaifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291204160_addEnumQulaifications1.resx">
+      <DependentUpon>202007291204160_addEnumQulaifications1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007291204302_addEnumQulaifications2.resx">
+      <DependentUpon>202007291204302_addEnumQulaifications2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300124296_lastupdate.resx">
+      <DependentUpon>202007300124296_lastupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300217024_cityandpost.resx">
+      <DependentUpon>202007300217024_cityandpost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300632456_Removequalifica.resx">
+      <DependentUpon>202007300632456_Removequalifica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300633532_Readdqualifica.resx">
+      <DependentUpon>202007300633532_Readdqualifica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300635153_addEnumReligion1.resx">
+      <DependentUpon>202007300635153_addEnumReligion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300637174_removereligion.resx">
+      <DependentUpon>202007300637174_removereligion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300637361_readdreligion.resx">
+      <DependentUpon>202007300637361_readdreligion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007300646331_new.resx">
+      <DependentUpon>202007300646331_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301318383_city.resx">
+      <DependentUpon>202007301318383_city.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301319401_post.resx">
+      <DependentUpon>202007301319401_post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301328033_postaa.resx">
+      <DependentUpon>202007301328033_postaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301331494_poskkk.resx">
+      <DependentUpon>202007301331494_poskkk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301332545_poskkky.resx">
+      <DependentUpon>202007301332545_poskkky.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301342372_changes.resx">
+      <DependentUpon>202007301342372_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301415221_cityandpost1.resx">
+      <DependentUpon>202007301415221_cityandpost1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301421337_cityandposts.resx">
+      <DependentUpon>202007301421337_cityandposts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301423076_cityandposts1.resx">
+      <DependentUpon>202007301423076_cityandposts1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007301429365_cityandpoststring.resx">
+      <DependentUpon>202007301429365_cityandpoststring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008010352245_removeenum.resx">
+      <DependentUpon>202008010352245_removeenum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008021035180_postandcity.resx">
+      <DependentUpon>202008021035180_postandcity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008021040259_postandcity-force.resx">
+      <DependentUpon>202008021040259_postandcity-force.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008040849496_change.resx">
+      <DependentUpon>202008040849496_change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008050857292_fb.resx">
+      <DependentUpon>202008050857292_fb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008120946366_usernamelogin.resx">
+      <DependentUpon>202008120946366_usernamelogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008121221075_behaviour.resx">
+      <DependentUpon>202008121221075_behaviour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008121223367_behaviour1.resx">
+      <DependentUpon>202008121223367_behaviour1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008121227113_grades.resx">
+      <DependentUpon>202008121227113_grades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008181237342_Relative.resx">
+      <DependentUpon>202008181237342_Relative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008181244062_RelativeRelation.resx">
+      <DependentUpon>202008181244062_RelativeRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008181254200_RemoveRelative.resx">
+      <DependentUpon>202008181254200_RemoveRelative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008181257371_ReaddRelative.resx">
+      <DependentUpon>202008181257371_ReaddRelative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008181301041_ReaddRelation.resx">
+      <DependentUpon>202008181301041_ReaddRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008190950362_dbidgeneration.resx">
+      <DependentUpon>202008190950362_dbidgeneration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008190953098_dbidgeneration1.resx">
+      <DependentUpon>202008190953098_dbidgeneration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008210939571_checkerrr.resx">
+      <DependentUpon>202008210939571_checkerrr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211003137_sss.resx">
+      <DependentUpon>202008211003137_sss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211005432_asdasd.resx">
+      <DependentUpon>202008211005432_asdasd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211008340_asdasdss.resx">
+      <DependentUpon>202008211008340_asdasdss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211304533_asdasdsad.resx">
+      <DependentUpon>202008211304533_asdasdsad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211523341_changeRelativeForignkey.resx">
+      <DependentUpon>202008211523341_changeRelativeForignkey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211536460_changeRelativeForignkeyss.resx">
+      <DependentUpon>202008211536460_changeRelativeForignkeyss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008220713054_changeRelativeForignkeyssdd.resx">
+      <DependentUpon>202008220713054_changeRelativeForignkeyssdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008221437514_removeresad.resx">
+      <DependentUpon>202008221437514_removeresad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008221449380_Add-relative-tostudent.resx">
+      <DependentUpon>202008221449380_Add-relative-tostudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008222015266_Add-situations.resx">
+      <DependentUpon>202008222015266_Add-situations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008230750095_connectSituationstostud.resx">
+      <DependentUpon>202008230750095_connectSituationstostud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008231310023_team-relative.resx">
+      <DependentUpon>202008231310023_team-relative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008301937064_Edit-relative.resx">
+      <DependentUpon>202008301937064_Edit-relative.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009221523432_news.resx">
+      <DependentUpon>202009221523432_news.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009221546453_newsss.resx">
+      <DependentUpon>202009221546453_newsss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009260745080_float.resx">
+      <DependentUpon>202009260745080_float.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010171011146_date.resx">
+      <DependentUpon>202010171011146_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010171013407_date1.resx">
+      <DependentUpon>202010171013407_date1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011080835133_Messages.resx">
+      <DependentUpon>202011080835133_Messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011080841250_Messages1.resx">
+      <DependentUpon>202011080841250_Messages1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011211002027_attachments.resx">
+      <DependentUpon>202011211002027_attachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011221949055_attachments1.resx">
+      <DependentUpon>202011221949055_attachments1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012241208455_checker123.resx">
+      <DependentUpon>202012241208455_checker123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301122505_addlevel-to-punshiment.resx">
+      <DependentUpon>202101301122505_addlevel-to-punshiment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102010732413_shootinglevel.resx">
+      <DependentUpon>202102010732413_shootinglevel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102020541492_Editstudgraduatedate.resx">
+      <DependentUpon>202102020541492_Editstudgraduatedate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041107408_UPDATE-STUDENT.resx">
+      <DependentUpon>202102041107408_UPDATE-STUDENT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102071909347_update-lwatalaba.resx">
+      <DependentUpon>202102071909347_update-lwatalaba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102071912462_update-datequalif.resx">
+      <DependentUpon>202102071912462_update-datequalif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102071927054_update-date2.resx">
+      <DependentUpon>202102071927054_update-date2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102081107054_addbodydetailstable.resx">
+      <DependentUpon>202102081107054_addbodydetailstable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102081119258_update-dd.resx">
+      <DependentUpon>202102081119258_update-dd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102081950312_update-dds.resx">
+      <DependentUpon>202102081950312_update-dds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102082210493_update-punshiment.resx">
+      <DependentUpon>202102082210493_update-punshiment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102090636106_update-punshiment-2.resx">
+      <DependentUpon>202102090636106_update-punshiment-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102110844265_kkjk.resx">
+      <DependentUpon>202102110844265_kkjk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102110847180_kkjk1.resx">
+      <DependentUpon>202102110847180_kkjk1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102121143353_punshimant-status.resx">
+      <DependentUpon>202102121143353_punshimant-status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102141635333_attend.resx">
+      <DependentUpon>202102141635333_attend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102141649289_attendd.resx">
+      <DependentUpon>202102141649289_attendd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102141650060_attendd1.resx">
+      <DependentUpon>202102141650060_attendd1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50989</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50989/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

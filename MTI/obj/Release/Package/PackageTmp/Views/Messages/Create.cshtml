@@ -1,0 +1,71 @@
+﻿@model MTI.Models.Message
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm("create", "Messages"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-fluid" style="position:absolute; width:98%;padding-bottom:100px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-comment"></span> Chat
+                            @Html.DropDownListFor(x => x.to, new List<SelectListItem>
+                                {
+                                new SelectListItem() {Text = "اعدادي", Value="51"},
+                                new SelectListItem() {Text = "متوسط", Value="50"},
+                                new SelectListItem() {Text = "نهائي ", Value="49"}
+                                }, new { @class = "form-control" })
+                        </div>
+                        <div class="panel-body">
+                            <ul class="chat">
+                               
+                                @{
+                                    /*
+                                      @foreach (var x in Model)
+                                    {
+                                    <li class="left clearfix">
+                                        <span class="chat-img pull-left"> <img src="~/Content/Image/logo color203936240.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                        <div class="chat-body clearfix">
+                                            <div class="header"> <strong class="primary-font">المعهد الفني </strong> <small class="pull-right text-muted"> <span class="glyphicon glyphicon-time"></span>@x.Date</small> </div>
+                                            <p>@x.MessageContent </p>
+                                        </div>
+                                    </li>
+                                    }
+ */
+                                }
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                @Html.TextBoxFor(x => x.MessageContent, new { @class = "form-control input-sm", placeholder = "Type your message here..." })
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-warning btn-group-sm" id="btn-chat" value="send">Send</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.Date)
+    @Html.HiddenFor(m => m.From)
+
+}
+
+@section Styles{
+    
+    <link rel="stylesheet" href="~/Content/Style/Message.css" />
+    
+    }

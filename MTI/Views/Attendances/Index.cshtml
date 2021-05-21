@@ -1,0 +1,106 @@
+﻿@model IEnumerable<MTI.Models.Attendance>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.students.Qualification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Clinic_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.underObservation_from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.underObservation_to)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hosptital_from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hosptital_to)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Absant_from)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Absant_to)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lec_absant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recovery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Totalminusgrade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.students.Qualification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Clinic_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.underObservation_from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.underObservation_to)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hosptital_from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hosptital_to)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Absant_from)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Absant_to)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lec_absant)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.recovery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Totalminusgrade)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

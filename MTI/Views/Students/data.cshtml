@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MTI.Models.Students>
+
+@{
+    ViewBag.Title = "data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>data</h2>
+
+<div>
+    <h4>Students</h4>
+    <table class="table table-bordered text-right " style="padding-top:20px;" id="students">
+        <thead class="thead-dark" style="padding-top:20px">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentNumber)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(model => x.StudentNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => x.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => x.relative.Relativename)
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#students").DataTable();
+        });
+        </script>
+    }

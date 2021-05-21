@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MTI.Helpers.rewardcastmodel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<button class="btn btn-success btn-lg text-center" style="margin-bottom:10px;">@Html.ActionLink(" اضافه", "AddReward", "Reward")</button>
+<h2 class="well">المكافأت</h2>
+@if (!Model.Any())
+{
+    <h2>لم يتم أضافة مكافأة بعد</h2>
+}
+else
+{
+
+    <div class="container-fluid" style="position:absolute; width:98%">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentID)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Reward_reason)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WhoApplyIt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.reward)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RewardDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.plusGrades)
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var data in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => data.StudentID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.Reward_reason)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.WhoApplyIt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.reward)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.RewardDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => data.plusGrades)
+                        </td>
+                        <td style="margin:2px; ">
+                            @Html.ActionLink("تعديل", "update", new { id = data.ID }, htmlAttributes: new { @class = "btn btn-info", @role = "button" })
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}

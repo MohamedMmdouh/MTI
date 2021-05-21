@@ -1,0 +1,139 @@
+﻿@model MTI.Models.Shooting
+@{
+    ViewBag.Title = "AddData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h1 class="center well" style="text-align:center">الرماية</h1>
+    <div class="field-validation-error">@ViewBag.ErrorMessage</div>
+
+    @using (Html.BeginForm("AddShooting", "Shooting"))
+    {
+        @Html.AntiForgeryToken()
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="col-sm-12 right well">
+            <div class="form-group">
+                @Html.LabelFor(m => m.StudentID)
+                @Html.TextBoxFor(m => m.StudentID, new { @class = "form-control", id = "studentnum",Type="number", oninput = "validity.valid||(value='');" })
+                @Html.ValidationMessageFor(m => m.StudentID)
+                <div id="Error">
+                    <p id="data"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Trainingname)
+                @Html.TextBoxFor(m => m.Trainingname, new { @class = "form-control", Type = "text" })
+                @Html.ValidationMessageFor(m => m.Trainingname)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Dateofshoot)
+                @Html.TextBoxFor(m => m.Dateofshoot, new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(m => m.Dateofshoot)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.weaponname)
+                @Html.TextBoxFor(m => m.weaponname, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(m => m.weaponname)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.numofbullet)
+                @Html.TextBoxFor(m => m.numofbullet, new { @class = "form-control", type = "number", oninput = "validity.valid||(value='');" ,id="bullet" })
+                @Html.ValidationMessageFor(m => m.numofbullet)
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.numofsuccessshots)
+                @Html.TextBoxFor(m => m.numofsuccessshots, new { @class = "form-control", type = "number", oninput = "validity.valid||(value='');" ,id="success"})
+                @Html.ValidationMessageFor(m => m.numofsuccessshots)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ShootigErrors)
+                @Html.TextAreaFor(m => m.ShootigErrors, new { @class = "form-control", type = "Text" })
+                @Html.ValidationMessageFor(m => m.ShootigErrors)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Grade)
+                @Html.TextBoxFor(m => m.Grade, new { @class = "form-control", type = "text" })
+                @Html.ValidationMessageFor(m => m.Grade)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" id="submit" class="btn btn-primary btn-lg">تسجيل</button>
+
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+    @Html.HiddenFor(m => m.ID, new Dictionary<string, object> { { "data-val", false } })
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#studentnum").keyup(function () {
+                var id = $("#studentnum").val();
+                if (id.length == 5) {
+                    $.ajax({
+                        url: "/api/Student/studentnmberexist/" + id,
+                        method: "post", type:"post",
+                        success: function (data) {
+                            var button = document.getElementById(".submit");
+
+                            if (data.Name != null) {
+                                $("#Error #data").text("ينتمي الرقم للطالب " + data.Name);
+                                $("#Error #data").css('color', 'green');
+                                $("#Error #data").css('font', 'bold');
+                                $("#studentnum").css('border-color', 'green');
+                            }
+
+
+                        }, error: function (error) {
+
+                            $("#Error #data").text("لا يوجد طالب بهذا الرقم");
+                            $("#Error #data").css('color', 'red');
+                            $("#studentnum").css('border-color', 'red');
+                        },
+
+                    });
+                }
+                if (id.length > 5) {
+                    $("#Error #data").text("لا يمكن للرقم العسكري ان يكون اكبر من 5 أرقام");
+                    $("#studentnum").css('border-color', 'red');
+
+                }
+                else {
+                    $("#Error #data").text("");
+                    $("#studentnum").css('border-color', '');
+                }
+            });
+        });
+        $('#bullet').keyup(function (e) {
+            if ($(this).val() > 20) {
+                e.preventDefault();
+                $(this).val(20);
+            }
+        });
+        $('#success').keyup(function (e) {
+            if ($(this).val() > 20) {
+                e.preventDefault();
+                $(this).val(20);
+            }
+        });
+       
+        
+    </script>
+
+}
+
